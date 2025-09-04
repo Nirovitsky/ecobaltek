@@ -99,7 +99,8 @@
 }
 
 .testimonial-columns {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   width: 100%;
   gap: 1.5rem;
   padding: 0 2rem;
