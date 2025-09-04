@@ -81,12 +81,17 @@ const testimonials: Testimonial[] = [
 ];
 
 export function TestimonialsSection() {
-  // Duplicate testimonials for continuous scroll effect
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  // Split testimonials into 5 columns for the alternating scroll effect
+  const columnsCount = 5;
+  const columns = Array.from({ length: columnsCount }, (_, index) => {
+    const startIndex = index * Math.ceil(testimonials.length / columnsCount);
+    const endIndex = startIndex + Math.ceil(testimonials.length / columnsCount);
+    return testimonials.slice(startIndex, endIndex);
+  });
 
   return (
-    <section id="reviews" className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
+    <section id="reviews" className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4" data-testid="text-testimonials-title">
             Loved by <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">world-class devs</span>
@@ -95,39 +100,47 @@ export function TestimonialsSection() {
             Engineers all around the world reach for our platforms by choice.
           </p>
         </div>
+      </div>
 
-        <div className="scrolling-testimonials">
-          <div className="scrolling-content">
-            <div className="testimonial-grid pb-8">
-              {duplicatedTestimonials.map((testimonial, index) => (
-                <div 
-                  key={index} 
-                  className="cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20" 
-                  data-testid={`testimonial-card-${index}`}
-                >
-                  <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${index}`}>
-                    {testimonial.quote}
-                  </p>
-                  <div className="flex items-center">
-                    <img 
-                      src={testimonial.avatar}
-                      alt={testimonial.author} 
-                      className="w-10 h-10 rounded-full mr-3 object-cover"
-                      data-testid={`img-testimonial-avatar-${index}`}
-                    />
-                    <div>
-                      <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-${index}`}>
-                        {testimonial.author}
-                      </div>
-                      <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${index}`}>
-                        {testimonial.company}
+      <div className="testimonial-columns-container">
+        <div className="testimonial-columns">
+          {columns.map((columnTestimonials, columnIndex) => (
+            <div 
+              key={columnIndex}
+              className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}
+            >
+              <div className="testimonial-column-content">
+                {/* Duplicate for seamless loop */}
+                {[...columnTestimonials, ...columnTestimonials].map((testimonial, index) => (
+                  <div 
+                    key={`${columnIndex}-${index}`}
+                    className="cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-6" 
+                    data-testid={`testimonial-card-${columnIndex}-${index}`}
+                  >
+                    <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${columnIndex}-${index}`}>
+                      {testimonial.quote}
+                    </p>
+                    <div className="flex items-center">
+                      <img 
+                        src={testimonial.avatar}
+                        alt={testimonial.author} 
+                        className="w-10 h-10 rounded-full mr-3 object-cover"
+                        data-testid={`img-testimonial-avatar-${columnIndex}-${index}`}
+                      />
+                      <div>
+                        <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-${columnIndex}-${index}`}>
+                          {testimonial.author}
+                        </div>
+                        <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${columnIndex}-${index}`}>
+                          {testimonial.company}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
