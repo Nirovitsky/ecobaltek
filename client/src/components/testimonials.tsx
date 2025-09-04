@@ -77,6 +77,96 @@ const testimonials: Testimonial[] = [
     author: "Carlos Mendez",
     company: "WIP",
     avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "baltek business transformed our hiring pipeline completely. The quality of candidates has improved dramatically since we started using it.",
+    author: "Rachel Green",
+    company: "Stripe",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "Asman's job recommendations are spot-on. It's like having a personal career advisor that actually understands what I'm looking for.",
+    author: "James Wilson",
+    company: "Spotify",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "The integration between both platforms is seamless. Our HR team loves baltek business and candidates rave about Asman.",
+    author: "Priya Patel",
+    company: "Airbnb",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b105?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "Found my current role through Asman in just 3 days. The platform's AI really understands what kind of opportunities match my skills.",
+    author: "Marcus Johnson",
+    company: "Tesla",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "baltek business has cut our time-to-hire by 60%. The candidate quality and fit have been exceptional across all our departments.",
+    author: "Sophie Chen",
+    company: "Discord",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "The user experience on Asman is incredibly smooth. It feels like the platform was designed by people who actually understand job searching.",
+    author: "Daniel Kumar",
+    company: "Shopify",
+    avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "Our startup was struggling to find quality developers. baltek business completely solved that problem - we hired 5 amazing engineers in 2 months.",
+    author: "Isabella Rodriguez",
+    company: "Y Combinator",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "Asman's career insights feature helped me negotiate a 40% salary increase. The market data is incredibly accurate and up-to-date.",
+    author: "Ryan Taylor",
+    company: "Netflix",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "The analytics dashboard on baltek business gives us insights we never had before. We can now predict hiring trends and plan better.",
+    author: "Olivia Martinez",
+    company: "Uber",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "Switched from LinkedIn to Asman and immediately started getting better job opportunities. The platform really understands my career goals.",
+    author: "Kevin Brooks",
+    company: "Adobe",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "baltek business has become our primary recruiting tool. The quality of matches and the speed of the process is unmatched.",
+    author: "Maya Singh",
+    company: "Salesforce",
+    avatar: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "The direct messaging feature on Asman allowed me to connect with hiring managers directly. No more going through countless recruiters.",
+    author: "Alex Thompson",
+    company: "GitHub",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "Our company has been using baltek business for 2 years now. It's consistently delivered high-quality candidates across all our engineering teams.",
+    author: "Samantha Lee",
+    company: "Zoom",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "Asman's profile optimization suggestions helped me land interviews at 3 top-tier companies. The platform really knows what employers want to see.",
+    author: "Jordan Williams",
+    company: "Slack",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+  },
+  {
+    quote: "The integration capabilities of baltek business with our existing HR systems made adoption incredibly smooth for our team.",
+    author: "Emily Davis",
+    company: "Dropbox",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b105?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
   }
 ];
 
