@@ -81,6 +81,9 @@ const testimonials: Testimonial[] = [
 ];
 
 export function TestimonialsSection() {
+  // Duplicate testimonials for continuous scroll effect
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
+
   return (
     <section id="reviews" className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -93,34 +96,38 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.slice(0, 15).map((testimonial, index) => (
-            <div 
-              key={index} 
-              className="cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20" 
-              data-testid={`testimonial-card-${index}`}
-            >
-              <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${index}`}>
-                {testimonial.quote}
-              </p>
-              <div className="flex items-center">
-                <img 
-                  src={testimonial.avatar}
-                  alt={testimonial.author} 
-                  className="w-10 h-10 rounded-full mr-3 object-cover"
-                  data-testid={`img-testimonial-avatar-${index}`}
-                />
-                <div>
-                  <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-${index}`}>
-                    {testimonial.author}
-                  </div>
-                  <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${index}`}>
-                    {testimonial.company}
+        <div className="scrolling-testimonials">
+          <div className="scrolling-content">
+            <div className="testimonial-grid pb-8">
+              {duplicatedTestimonials.map((testimonial, index) => (
+                <div 
+                  key={index} 
+                  className="cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20" 
+                  data-testid={`testimonial-card-${index}`}
+                >
+                  <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${index}`}>
+                    {testimonial.quote}
+                  </p>
+                  <div className="flex items-center">
+                    <img 
+                      src={testimonial.avatar}
+                      alt={testimonial.author} 
+                      className="w-10 h-10 rounded-full mr-3 object-cover"
+                      data-testid={`img-testimonial-avatar-${index}`}
+                    />
+                    <div>
+                      <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-${index}`}>
+                        {testimonial.author}
+                      </div>
+                      <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${index}`}>
+                        {testimonial.company}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
