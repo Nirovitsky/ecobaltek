@@ -142,7 +142,8 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
+  min-height: 180px;
   transition: all 0.3s ease;
   opacity: 0.8;
 }
@@ -155,8 +156,8 @@
 }
 
 .middle-column-card:hover {
-  background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--primary) / 0.05));
-  border-color: hsl(var(--primary) / 0.3);
+  background: linear-gradient(135deg, rgba(24, 119, 242, 0.15), rgba(24, 119, 242, 0.05));
+  border-color: rgba(24, 119, 242, 0.4);
 }
 
 .platform-card {
