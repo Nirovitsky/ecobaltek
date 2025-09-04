@@ -81,9 +81,6 @@ const testimonials: Testimonial[] = [
 ];
 
 export function TestimonialsSection() {
-  // Only show first 15 testimonials in 5 rows of 3
-  const displayTestimonials = testimonials.slice(0, 15);
-
   return (
     <section id="reviews" className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -96,29 +93,31 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
-          {displayTestimonials.map((testimonial, index) => (
+        <div className="space-y-8">
+          {testimonials.slice(0, 15).map((testimonial, index) => (
             <div 
               key={index} 
-              className="cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:bg-gradient-to-br hover:from-primary/5 hover:to-secondary/5 hover:border-primary/20 hover:shadow-lg opacity-80 hover:opacity-100" 
+              className="cursor-testimonial-card bg-transparent border-none rounded-none p-0 transition-all duration-300 hover:opacity-100 opacity-80" 
               data-testid={`testimonial-card-${index}`}
             >
-              <p className="text-foreground mb-4 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${index}`}>
-                {testimonial.quote}
-              </p>
-              <div className="flex items-center">
-                <img 
-                  src={testimonial.avatar}
-                  alt={testimonial.author} 
-                  className="w-10 h-10 rounded-full mr-3 object-cover"
-                  data-testid={`img-testimonial-avatar-${index}`}
-                />
-                <div>
-                  <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-${index}`}>
-                    {testimonial.author}
-                  </div>
-                  <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${index}`}>
-                    {testimonial.company}
+              <div className="max-w-4xl">
+                <p className="text-foreground mb-6 leading-relaxed text-lg font-normal" data-testid={`text-testimonial-quote-${index}`}>
+                  {testimonial.quote}
+                </p>
+                <div className="flex items-center">
+                  <img 
+                    src={testimonial.avatar}
+                    alt={testimonial.author} 
+                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                    data-testid={`img-testimonial-avatar-${index}`}
+                  />
+                  <div>
+                    <div className="font-semibold text-foreground" data-testid={`text-testimonial-author-${index}`}>
+                      {testimonial.author}
+                    </div>
+                    <div className="text-muted-foreground" data-testid={`text-testimonial-company-${index}`}>
+                      {testimonial.company}
+                    </div>
                   </div>
                 </div>
               </div>

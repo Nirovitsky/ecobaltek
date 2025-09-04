@@ -92,20 +92,12 @@
 }
 
 .cursor-testimonial-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
   opacity: 0.8;
 }
 
 .cursor-testimonial-card:hover {
   opacity: 1;
-  background: linear-gradient(to bottom right, hsl(var(--primary) / 0.05), hsl(var(--secondary) / 0.05));
-  border-color: hsl(var(--primary) / 0.2);
-  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.1);
-  transform: translateY(-2px);
 }
 
 .platform-card {
