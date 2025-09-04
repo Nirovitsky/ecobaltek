@@ -203,7 +203,7 @@ export function TestimonialsSection() {
                 {[...columnTestimonials, ...columnTestimonials, ...columnTestimonials, ...columnTestimonials].map((testimonial, index) => (
                   <div 
                     key={`${columnIndex}-${index}`}
-                    className="cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-6" 
+                    className={`cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-6 ${columnIndex >= 1 && columnIndex <= 3 ? 'middle-column-card' : ''}`} 
                     data-testid={`testimonial-card-${columnIndex}-${index}`}
                   >
                     <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${columnIndex}-${index}`}>

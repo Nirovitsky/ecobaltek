@@ -154,6 +154,11 @@
   transform: translateY(-2px);
 }
 
+.middle-column-card:hover {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--primary) / 0.05));
+  border-color: hsl(var(--primary) / 0.3);
+}
+
 .platform-card {
   transition: all 0.3s ease;
 }
