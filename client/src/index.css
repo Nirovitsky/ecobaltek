@@ -95,10 +95,7 @@
   overflow: hidden;
   height: 1200px;
   position: relative;
-  mask-image: 
-    linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-  mask-composite: intersect;
+  mask-image: radial-gradient(ellipse 80% 60% at center, black 40%, transparent 70%);
 }
 
 .testimonial-columns {
@@ -123,9 +120,18 @@
   animation: scrollDown 80s linear infinite;
 }
 
+.scroll-up .testimonial-column-content {
+  animation: scrollUp 80s linear infinite;
+}
+
 @keyframes scrollDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollUp {
   0% { transform: translateY(-50%); }
-  100% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
 }
 
 .testimonial-column:hover .testimonial-column-content {

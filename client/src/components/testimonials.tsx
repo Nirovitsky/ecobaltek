@@ -106,11 +106,11 @@ export function TestimonialsSection() {
           {columns.map((columnTestimonials, columnIndex) => (
             <div 
               key={columnIndex}
-              className="testimonial-column scroll-down"
+              className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}
             >
               <div className="testimonial-column-content">
-                {/* Triple the content for seamless infinite scroll */}
-                {[...columnTestimonials, ...columnTestimonials, ...columnTestimonials].map((testimonial, index) => (
+                {/* Quadruple the content for seamless infinite scroll */}
+                {[...columnTestimonials, ...columnTestimonials, ...columnTestimonials, ...columnTestimonials].map((testimonial, index) => (
                   <div 
                     key={`${columnIndex}-${index}`}
                     className="cursor-testimonial-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-6" 
