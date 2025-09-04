@@ -106,7 +106,7 @@ export function TestimonialsSection() {
           {columns.map((columnTestimonials, columnIndex) => (
             <div 
               key={columnIndex}
-              className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}
+              className="testimonial-column scroll-down"
             >
               <div className="testimonial-column-content">
                 {/* Triple the content for seamless infinite scroll */}

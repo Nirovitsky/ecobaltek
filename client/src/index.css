@@ -93,9 +93,12 @@
 
 .testimonial-columns-container {
   overflow: hidden;
-  height: 600px;
+  height: 800px;
   position: relative;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: 
+    linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-composite: intersect;
 }
 
 .testimonial-columns {
@@ -117,20 +120,11 @@
 }
 
 .scroll-down .testimonial-column-content {
-  animation: scrollDown 60s linear infinite;
-}
-
-.scroll-up .testimonial-column-content {
-  animation: scrollUp 60s linear infinite;
+  animation: scrollDown 80s linear infinite;
 }
 
 @keyframes scrollDown {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes scrollUp {
-  0% { transform: translateY(0); }
+  0% { transform: translateY(-50%); }
   100% { transform: translateY(-100%); }
 }
 
@@ -142,7 +136,8 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
+  min-height: 200px;
   transition: all 0.3s ease;
   opacity: 0.8;
 }
