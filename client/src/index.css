@@ -134,7 +134,7 @@
   100% { transform: translateY(-100%); }
 }
 
-.testimonial-columns-container:hover .testimonial-column-content {
+.testimonial-column:hover .testimonial-column-content {
   animation-play-state: paused;
 }
 
