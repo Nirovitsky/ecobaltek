@@ -91,43 +91,21 @@
   background: linear-gradient(135deg, #1877F2 0%, hsl(210, 100%, 60%) 100%);
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-}
-
-.testimonial-card {
+.cursor-testimonial-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  opacity: 0.8;
 }
 
-.testimonial-card:hover {
+.cursor-testimonial-card:hover {
+  opacity: 1;
+  background: linear-gradient(to bottom right, hsl(var(--primary) / 0.05), hsl(var(--secondary) / 0.05));
+  border-color: hsl(var(--primary) / 0.2);
+  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.scrolling-testimonials {
-  overflow: hidden;
-  height: 600px;
-  position: relative;
-}
-
-.scrolling-content {
-  animation: scroll 60s linear infinite;
-}
-
-@keyframes scroll {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-100%); }
-}
-
-.scrolling-content:hover {
-  animation-play-state: paused;
 }
 
 .platform-card {
