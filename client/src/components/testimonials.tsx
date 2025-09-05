@@ -171,18 +171,18 @@ const testimonials: Testimonial[] = [
 ];
 
 export function TestimonialsSection() {
-  // Create columns for different screen sizes - we'll show all testimonials in each column for horizontal scroll on mobile
+  // Create 5 columns to accommodate all responsive breakpoints
+  // The CSS will handle showing/hiding columns based on screen size
   const createColumns = (count: number) => {
     return Array.from({ length: count }, (_, columnIndex) => {
       return testimonials.filter((_, testimonialIndex) => testimonialIndex % count === columnIndex);
     });
   };
 
-  // For screens >= 1024px: Create columns for vertical scrolling
-  const desktopColumns = createColumns(5);
-  const tabletColumns = createColumns(3);
+  // Create 5 columns - CSS will responsively show appropriate number
+  const columns = createColumns(5);
   
-  // For screens < 1024px: Create horizontal scroll cards
+  // For screens < 1024px: Create horizontal scroll cards  
   const mobileCards = testimonials;
 
   return (
@@ -198,10 +198,10 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Desktop & Tablet: Unified 5-column layout with responsive masking */}
+      {/* Desktop & Tablet: Responsive column layout */}
       <div className="testimonial-columns-container hidden lg:block">
         <div className="testimonial-columns">
-          {desktopColumns.map((columnTestimonials, columnIndex) => (
+          {columns.map((columnTestimonials, columnIndex) => (
             <div 
               key={columnIndex}
               className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}

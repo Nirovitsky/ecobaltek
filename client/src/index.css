@@ -113,46 +113,42 @@
   }
 }
 
+/* Responsive grid columns with smooth transitions */
 .testimonial-columns {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   width: 100%;
-  gap: 1.5rem;
-  padding: 0 2rem;
+  gap: 1rem;
+  padding: 0 1rem;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-/* Progressive masking for smooth column fade-out */
-@media (min-width: 1024px) and (max-width: 1199px) {
-  .testimonial-columns-container {
-    mask-image: 
-      radial-gradient(ellipse 80% 60% at center, black 40%, transparent 70%),
-      linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-    mask-composite: intersect;
+@media (min-width: 768px) {
+  .testimonial-columns {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    padding: 0 1.5rem;
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1359px) {
-  .testimonial-columns-container {
-    mask-image: 
-      radial-gradient(ellipse 80% 60% at center, black 40%, transparent 70%),
-      linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
-    mask-composite: intersect;
+@media (min-width: 1024px) {
+  .testimonial-columns {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
   }
 }
 
-@media (min-width: 1360px) and (max-width: 1519px) {
-  .testimonial-columns-container {
-    mask-image: 
-      radial-gradient(ellipse 80% 60% at center, black 40%, transparent 70%),
-      linear-gradient(90deg, transparent 0%, black 3%, black 97%, transparent 100%);
-    mask-composite: intersect;
+@media (min-width: 1280px) {
+  .testimonial-columns {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    padding: 0 2rem;
   }
 }
 
-@media (min-width: 1520px) {
-  .testimonial-columns-container {
-    mask-image: radial-gradient(ellipse 80% 60% at center, black 40%, transparent 70%);
-  }
+/* Apply smooth masking effects */
+.testimonial-columns-container {
+  mask-image: radial-gradient(ellipse 80% 60% at center, black 40%, transparent 70%);
 }
 
 /* Horizontal scrolling for mobile and small tablets */
