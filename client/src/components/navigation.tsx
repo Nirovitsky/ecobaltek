@@ -128,7 +128,11 @@ export function Navigation() {
                     className="p-2 xl:hidden"
                     data-testid="button-mobile-menu"
                   >
-                    <Menu className="h-5 w-5" />
+                    <div className="w-5 h-5 flex flex-col justify-center items-center">
+                      <div className={`w-4 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
+                      <div className={`w-4 h-0.5 bg-current transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+                      <div className={`w-4 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} />
+                    </div>
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
