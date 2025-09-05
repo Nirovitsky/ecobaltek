@@ -78,7 +78,7 @@ export function Navigation() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
+            <div className="hidden xl:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
               <a
                 href="#about"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
@@ -113,7 +113,7 @@ export function Navigation() {
             <div className="flex items-center space-x-3">
               <Button
                 onClick={() => setIsDownloadModalOpen(true)}
-                className="hidden lg:flex bg-black text-white hover:bg-gray-800 text-sm font-medium px-4 lg:px-5 py-2 h-9 rounded-xl transition-colors"
+                className="hidden xl:flex bg-black text-white hover:bg-gray-800 text-sm font-medium px-4 lg:px-5 py-2 h-9 rounded-xl transition-colors"
                 data-testid="button-download"
               >
                 Download
@@ -125,7 +125,7 @@ export function Navigation() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="p-2 lg:hidden"
+                    className="p-2 xl:hidden"
                     data-testid="button-mobile-menu"
                   >
                     <Menu className="h-5 w-5" />
