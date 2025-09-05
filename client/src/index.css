@@ -344,3 +344,8 @@
   );
 }
 
+/* Prevent layout shift when modal opens */
+body[data-scroll-locked] {
+  padding-right: var(--scrollbar-width, 0px);
+}
+

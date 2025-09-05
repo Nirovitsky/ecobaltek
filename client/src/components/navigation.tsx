@@ -33,6 +33,27 @@ export function Navigation() {
     }
   }, [isDownloadModalOpen]);
 
+  useEffect(() => {
+    // Prevent layout shift when modal opens by calculating scrollbar width
+    const preventLayoutShift = () => {
+      if (isDownloadModalOpen) {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      } else {
+        document.documentElement.style.removeProperty('--scrollbar-width');
+        document.body.style.paddingRight = '';
+      }
+    };
+
+    preventLayoutShift();
+    
+    return () => {
+      document.documentElement.style.removeProperty('--scrollbar-width');
+      document.body.style.paddingRight = '';
+    };
+  }, [isDownloadModalOpen]);
+
   const generateQRCodes = async () => {
     try {
       // App Store URLs for both apps (replace with your actual app URLs)
@@ -226,7 +247,7 @@ export function Navigation() {
                     <span className="font-medium text-gray-900">iOS</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm hover:shadow-md transition-shadow duration-200">
+                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
                     {qrCodes.baltekIos ? (
                       <img
                         src={qrCodes.baltekIos}
@@ -253,7 +274,7 @@ export function Navigation() {
                     <span className="font-medium text-gray-900">Android</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm hover:shadow-md transition-shadow duration-200">
+                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
                     {qrCodes.baltekAndroid ? (
                       <img
                         src={qrCodes.baltekAndroid}
@@ -293,7 +314,7 @@ export function Navigation() {
                     <span className="font-medium text-gray-900">iOS</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm hover:shadow-md transition-shadow duration-200">
+                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
                     {qrCodes.asmanIos ? (
                       <img
                         src={qrCodes.asmanIos}
@@ -320,7 +341,7 @@ export function Navigation() {
                     <span className="font-medium text-gray-900">Android</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm hover:shadow-md transition-shadow duration-200">
+                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
                     {qrCodes.asmanAndroid ? (
                       <img
                         src={qrCodes.asmanAndroid}
