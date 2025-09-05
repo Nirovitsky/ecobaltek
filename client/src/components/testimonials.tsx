@@ -198,10 +198,53 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Desktop & Tablet: Vertical scrolling columns */}
-      <div className="testimonial-columns-container hidden lg:block">
+      {/* Desktop: 5 columns vertical scrolling */}
+      <div className="testimonial-columns-container hidden xl:block">
         <div className="testimonial-columns">
           {desktopColumns.map((columnTestimonials, columnIndex) => (
+            <div 
+              key={columnIndex}
+              className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}
+            >
+              <div className="testimonial-column-content">
+                {/* Quadruple the content for seamless infinite scroll */}
+                {[...columnTestimonials, ...columnTestimonials, ...columnTestimonials, ...columnTestimonials].map((testimonial, index) => (
+                  <div 
+                    key={`${columnIndex}-${index}`}
+                    className="cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-4 sm:p-5 lg:p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-4 sm:mb-5 lg:mb-6" 
+                    data-testid={`testimonial-card-${columnIndex}-${index}`}
+                  >
+                    <p className="text-foreground mb-3 sm:mb-4 lg:mb-6 leading-relaxed text-xs sm:text-sm" data-testid={`text-testimonial-quote-${columnIndex}-${index}`}>
+                      {testimonial.quote}
+                    </p>
+                    <div className="flex items-center">
+                      <img 
+                        src={testimonial.avatar}
+                        alt={testimonial.author} 
+                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-2 sm:mr-3 object-cover"
+                        data-testid={`img-testimonial-avatar-${columnIndex}-${index}`}
+                      />
+                      <div>
+                        <div className="font-semibold text-foreground text-xs sm:text-sm" data-testid={`text-testimonial-author-${columnIndex}-${index}`}>
+                          {testimonial.author}
+                        </div>
+                        <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${columnIndex}-${index}`}>
+                          {testimonial.company}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tablet: 3 columns vertical scrolling */}
+      <div className="testimonial-columns-container hidden lg:block xl:hidden">
+        <div className="testimonial-columns">
+          {tabletColumns.map((columnTestimonials, columnIndex) => (
             <div 
               key={columnIndex}
               className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}
