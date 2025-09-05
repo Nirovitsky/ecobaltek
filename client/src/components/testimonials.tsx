@@ -179,13 +179,13 @@ export function TestimonialsSection() {
   });
 
   return (
-    <section id="reviews" className="py-20 bg-background">
+    <section id="reviews" className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4" data-testid="text-testimonials-title">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-testimonials-title">
             Loved by <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">world-class devs</span>
           </h2>
-          <p className="text-xl text-muted-foreground" data-testid="text-testimonials-subtitle">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4 sm:px-0" data-testid="text-testimonials-subtitle">
             Engineers all around the world reach for our platforms by choice.
           </p>
         </div>
@@ -203,21 +203,21 @@ export function TestimonialsSection() {
                 {[...columnTestimonials, ...columnTestimonials, ...columnTestimonials, ...columnTestimonials].map((testimonial, index) => (
                   <div 
                     key={`${columnIndex}-${index}`}
-                    className="cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-6" 
+                    className="cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-4 sm:p-5 lg:p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-4 sm:mb-5 lg:mb-6" 
                     data-testid={`testimonial-card-${columnIndex}-${index}`}
                   >
-                    <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${columnIndex}-${index}`}>
+                    <p className="text-foreground mb-3 sm:mb-4 lg:mb-6 leading-relaxed text-xs sm:text-sm" data-testid={`text-testimonial-quote-${columnIndex}-${index}`}>
                       {testimonial.quote}
                     </p>
                     <div className="flex items-center">
                       <img 
                         src={testimonial.avatar}
                         alt={testimonial.author} 
-                        className="w-10 h-10 rounded-full mr-3 object-cover"
+                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-2 sm:mr-3 object-cover"
                         data-testid={`img-testimonial-avatar-${columnIndex}-${index}`}
                       />
                       <div>
-                        <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-${columnIndex}-${index}`}>
+                        <div className="font-semibold text-foreground text-xs sm:text-sm" data-testid={`text-testimonial-author-${columnIndex}-${index}`}>
                           {testimonial.author}
                         </div>
                         <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${columnIndex}-${index}`}>

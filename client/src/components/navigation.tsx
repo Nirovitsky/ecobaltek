@@ -6,11 +6,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Smartphone, Tablet, Building2, UserCheck, Apple } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Smartphone, Tablet, Building2, UserCheck, Apple, Menu, X } from "lucide-react";
 import baltekLogo from "@assets/baltek-logo1_1757070533630.png";
 
 export function Navigation() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [qrCodes, setQrCodes] = useState({
     baltekIos: "",
     baltekAndroid: "",
@@ -55,22 +63,22 @@ export function Navigation() {
 
   return (
     <>
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-        <nav className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-12 py-3 w-[85vw]">
-          <div className="flex items-center justify-between space-x-16">
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-[95vw] px-4">
+        <nav className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-4 sm:px-8 lg:px-12 py-3 mx-auto max-w-6xl">
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
               <img 
                 src={baltekLogo} 
                 alt="baltek" 
-                className="h-8 w-auto mr-3"
+                className="h-6 sm:h-8 w-auto mr-2 sm:mr-3"
                 data-testid="logo-baltek"
               />
-              <div className="text-lg font-medium text-black">baltek</div>
+              <div className="text-base sm:text-lg font-medium text-black">baltek</div>
             </div>
 
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-10">
+            {/* Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
               <a
                 href="#about"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
@@ -101,15 +109,85 @@ export function Navigation() {
               </a>
             </div>
 
-            {/* Download Button */}
-            <div className="flex items-center">
+            {/* Desktop Download Button and Mobile Menu */}
+            <div className="flex items-center space-x-3">
               <Button
                 onClick={() => setIsDownloadModalOpen(true)}
-                className="bg-black text-white hover:bg-gray-800 text-sm font-medium px-5 py-2 h-9 rounded-xl transition-colors"
+                className="hidden sm:flex bg-black text-white hover:bg-gray-800 text-sm font-medium px-4 lg:px-5 py-2 h-9 rounded-xl transition-colors"
                 data-testid="button-download"
               >
                 Download
               </Button>
+              
+              {/* Mobile Menu */}
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild className="lg:hidden">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="p-2"
+                    data-testid="button-mobile-menu"
+                  >
+                    <Menu className="h-5 w-5" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <SheetHeader>
+                    <SheetTitle className="flex items-center">
+                      <img 
+                        src={baltekLogo} 
+                        alt="baltek" 
+                        className="h-6 w-auto mr-2"
+                      />
+                      <span>baltek</span>
+                    </SheetTitle>
+                  </SheetHeader>
+                  <div className="flex flex-col space-y-6 mt-8">
+                    <a
+                      href="#about"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg text-gray-600 hover:text-black transition-colors font-medium"
+                      data-testid="mobile-link-home"
+                    >
+                      Home
+                    </a>
+                    <a
+                      href="#platforms"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg text-gray-600 hover:text-black transition-colors font-medium"
+                      data-testid="mobile-link-solutions"
+                    >
+                      Solutions
+                    </a>
+                    <a
+                      href="#reviews"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg text-gray-600 hover:text-black transition-colors font-medium"
+                      data-testid="mobile-link-reviews"
+                    >
+                      Reviews
+                    </a>
+                    <a
+                      href="#contact"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg text-gray-600 hover:text-black transition-colors font-medium"
+                      data-testid="mobile-link-contact"
+                    >
+                      Contact
+                    </a>
+                    <Button
+                      onClick={() => {
+                        setIsDownloadModalOpen(true);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="bg-black text-white hover:bg-gray-800 text-base font-medium py-3 rounded-xl transition-colors mt-4"
+                      data-testid="mobile-button-download"
+                    >
+                      Download Apps
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </nav>
@@ -117,7 +195,7 @@ export function Navigation() {
 
       {/* Download Modal */}
       <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
-        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto p-4 sm:p-6">
           <DialogHeader className="text-center pb-6">
             <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">
               Download Our Apps
@@ -141,7 +219,7 @@ export function Navigation() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* baltek iOS */}
                 <div className="flex flex-col items-center group">
                   <div className="flex items-center space-x-2 mb-4">
@@ -212,7 +290,7 @@ export function Navigation() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Asman iOS */}
                 <div className="flex flex-col items-center group">
                   <div className="flex items-center space-x-2 mb-4">
