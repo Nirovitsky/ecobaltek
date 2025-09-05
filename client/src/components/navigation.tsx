@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 export function Navigation() {
   return (
     <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-      <nav className="bg-white/90 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-8 py-3">
-        <div className="flex items-center justify-between space-x-12">
+      <nav className="bg-white/90 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-12 py-4 min-w-[600px]">
+        <div className="flex items-center justify-between space-x-16">
           {/* Logo */}
           <div className="flex items-center">
             <div className="text-lg font-medium text-black">
@@ -13,7 +13,7 @@ export function Navigation() {
           </div>
           
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-10">
             <a 
               href="#features"
               className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
