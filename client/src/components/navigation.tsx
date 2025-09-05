@@ -63,7 +63,7 @@ export function Navigation() {
 
   return (
     <>
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-[95vw] px-4">
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[60] w-full max-w-[95vw] px-4">
         <nav className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-4 sm:px-8 lg:px-12 py-3 mx-auto max-w-6xl">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -135,7 +135,7 @@ export function Navigation() {
                     </div>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetContent side="right" className="w-[300px] sm:w-[400px] z-[50]">
                   <SheetHeader>
                     <SheetTitle className="flex items-center">
                       <img 
