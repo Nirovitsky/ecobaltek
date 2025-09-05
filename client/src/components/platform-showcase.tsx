@@ -12,42 +12,90 @@ export function PlatformShowcase() {
 
   useEffect(() => {
     const cards = [cardRef1, cardRef2, cardRef3, cardRef4, cardRef5];
+    let animationId: number;
     
-    const handleMouseMove = (e: MouseEvent, card: HTMLDivElement) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      cards.forEach((cardRef) => {
+        const card = cardRef.current;
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          // Calculate distance from mouse to card center
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const distance = Math.sqrt(
+            Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
+          );
+          
+          // Maximum distance for effect (adjust for sensitivity)
+          const maxDistance = 400;
+          
+          // Check if mouse is within the card bounds or nearby
+          const isNearby = distance < maxDistance;
+          const isHovering = 
+            x >= -50 && x <= rect.width + 50 && 
+            y >= -50 && y <= rect.height + 50;
+          
+          if (isHovering || isNearby) {
+            // Calculate opacity based on proximity
+            const opacity = Math.max(0, 1 - distance / maxDistance);
+            
+            // Update CSS variables
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+            card.style.setProperty('--card-opacity', `${opacity * 0.6}`);
+          } else {
+            card.style.setProperty('--card-opacity', '0');
+          }
+        }
+      });
     };
 
     const handleMouseEnter = (card: HTMLDivElement) => {
-      card.style.setProperty('--opacity', '1');
+      card.style.setProperty('--card-opacity', '0.8');
     };
 
     const handleMouseLeave = (card: HTMLDivElement) => {
-      card.style.setProperty('--opacity', '0');
+      // Don't immediately hide on leave, let global mouse move handle it
+      setTimeout(() => {
+        const currentOpacity = parseFloat(card.style.getPropertyValue('--card-opacity'));
+        if (currentOpacity > 0) {
+          card.style.setProperty('--card-opacity', '0');
+        }
+      }, 100);
     };
 
+    // Add global mouse move listener
+    document.addEventListener('mousemove', handleGlobalMouseMove);
+
+    // Add individual card listeners
     cards.forEach((cardRef) => {
       const card = cardRef.current;
       if (card) {
-        const onMouseMove = (e: MouseEvent) => handleMouseMove(e, card);
         const onMouseEnter = () => handleMouseEnter(card);
         const onMouseLeave = () => handleMouseLeave(card);
 
-        card.addEventListener('mousemove', onMouseMove);
         card.addEventListener('mouseenter', onMouseEnter);
         card.addEventListener('mouseleave', onMouseLeave);
-
-        return () => {
-          card.removeEventListener('mousemove', onMouseMove);
-          card.removeEventListener('mouseenter', onMouseEnter);
-          card.removeEventListener('mouseleave', onMouseLeave);
-        };
       }
     });
+
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMouseMove);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+      
+      cards.forEach((cardRef) => {
+        const card = cardRef.current;
+        if (card) {
+          card.removeEventListener('mouseenter', () => handleMouseEnter(card));
+          card.removeEventListener('mouseleave', () => handleMouseLeave(card));
+        }
+      });
+    };
   }, []);
 
   return (
@@ -71,10 +119,9 @@ export function PlatformShowcase() {
             style={{
               '--mouse-x': '0px',
               '--mouse-y': '0px',
-              '--opacity': '0'
+              '--card-opacity': '0'
             } as React.CSSProperties}
           >
-            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
             <CardContent className="relative p-6 bg-white rounded-lg">
               <div className="flex items-center mb-4">
                 <Building2 className="text-gray-600 mr-3 h-6 w-6" />
@@ -109,10 +156,9 @@ export function PlatformShowcase() {
             style={{
               '--mouse-x': '0px',
               '--mouse-y': '0px',
-              '--opacity': '0'
+              '--card-opacity': '0'
             } as React.CSSProperties}
           >
-            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
             <CardContent className="relative p-6 bg-white rounded-lg">
               <div className="flex items-center mb-4">
                 <UserCheck className="text-gray-600 mr-3 h-6 w-6" />
@@ -172,10 +218,9 @@ export function PlatformShowcase() {
             style={{
               '--mouse-x': '0px',
               '--mouse-y': '0px',
-              '--opacity': '0'
+              '--card-opacity': '0'
             } as React.CSSProperties}
           >
-            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
             <CardContent className="relative p-6 bg-white rounded-lg">
               <BarChart3 className="text-gray-600 h-6 w-6 mb-3" />
               <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-ai-title">AI Intelligence</h3>
@@ -191,10 +236,9 @@ export function PlatformShowcase() {
             style={{
               '--mouse-x': '0px',
               '--mouse-y': '0px',
-              '--opacity': '0'
+              '--card-opacity': '0'
             } as React.CSSProperties}
           >
-            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
             <CardContent className="relative p-6 bg-white rounded-lg">
               <Users className="text-gray-600 h-6 w-6 mb-3" />
               <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-familiar-title">Feels Familiar</h3>
@@ -210,10 +254,9 @@ export function PlatformShowcase() {
             style={{
               '--mouse-x': '0px',
               '--mouse-y': '0px',
-              '--opacity': '0'
+              '--card-opacity': '0'
             } as React.CSSProperties}
           >
-            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
             <CardContent className="relative p-6 bg-white rounded-lg">
               <Zap className="text-gray-600 h-6 w-6 mb-3" />
               <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-privacy-title">Privacy First</h3>
