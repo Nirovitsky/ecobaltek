@@ -78,7 +78,7 @@ export function Navigation() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
               <a
                 href="#about"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
@@ -113,7 +113,7 @@ export function Navigation() {
             <div className="flex items-center space-x-3">
               <Button
                 onClick={() => setIsDownloadModalOpen(true)}
-                className="hidden sm:flex bg-black text-white hover:bg-gray-800 text-sm font-medium px-4 lg:px-5 py-2 h-9 rounded-xl transition-colors"
+                className="hidden md:flex bg-black text-white hover:bg-gray-800 text-sm font-medium px-4 lg:px-5 py-2 h-9 rounded-xl transition-colors"
                 data-testid="button-download"
               >
                 Download
@@ -121,7 +121,7 @@ export function Navigation() {
               
               {/* Mobile Menu */}
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild className="lg:hidden">
+                <SheetTrigger asChild className="md:hidden">
                   <Button
                     variant="ghost"
                     size="sm"
