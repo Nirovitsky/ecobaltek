@@ -171,12 +171,19 @@ const testimonials: Testimonial[] = [
 ];
 
 export function TestimonialsSection() {
-  // Create exactly 5 columns with evenly distributed testimonials
-  const columnsCount = 5;
-  const columns = Array.from({ length: columnsCount }, (_, columnIndex) => {
-    // Distribute testimonials evenly across columns in round-robin fashion
-    return testimonials.filter((_, testimonialIndex) => testimonialIndex % columnsCount === columnIndex);
-  });
+  // Create columns for different screen sizes - we'll show all testimonials in each column for horizontal scroll on mobile
+  const createColumns = (count: number) => {
+    return Array.from({ length: count }, (_, columnIndex) => {
+      return testimonials.filter((_, testimonialIndex) => testimonialIndex % count === columnIndex);
+    });
+  };
+
+  // For screens >= 1024px: Create columns for vertical scrolling
+  const desktopColumns = createColumns(5);
+  const tabletColumns = createColumns(3);
+  
+  // For screens < 1024px: Create horizontal scroll cards
+  const mobileCards = testimonials;
 
   return (
     <section id="reviews" className="py-12 sm:py-16 lg:py-20 bg-background">
@@ -191,9 +198,10 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      <div className="testimonial-columns-container">
+      {/* Desktop & Tablet: Vertical scrolling columns */}
+      <div className="testimonial-columns-container hidden lg:block">
         <div className="testimonial-columns">
-          {columns.map((columnTestimonials, columnIndex) => (
+          {desktopColumns.map((columnTestimonials, columnIndex) => (
             <div 
               key={columnIndex}
               className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}
@@ -230,6 +238,42 @@ export function TestimonialsSection() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Mobile & Small Tablet: Horizontal scrolling */}
+      <div className="block lg:hidden">
+        <div className="testimonial-horizontal-scroll">
+          <div className="testimonial-horizontal-content">
+            {/* Double the content for seamless infinite scroll */}
+            {[...mobileCards, ...mobileCards].map((testimonial, index) => (
+              <div 
+                key={`mobile-${index}`}
+                className="testimonial-horizontal-card cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-4 sm:p-5 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20" 
+                data-testid={`testimonial-card-mobile-${index}`}
+              >
+                <p className="text-foreground mb-3 sm:mb-4 leading-relaxed text-xs sm:text-sm" data-testid={`text-testimonial-quote-mobile-${index}`}>
+                  {testimonial.quote}
+                </p>
+                <div className="flex items-center">
+                  <img 
+                    src={testimonial.avatar}
+                    alt={testimonial.author} 
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-2 sm:mr-3 object-cover"
+                    data-testid={`img-testimonial-avatar-mobile-${index}`}
+                  />
+                  <div>
+                    <div className="font-semibold text-foreground text-xs sm:text-sm" data-testid={`text-testimonial-author-mobile-${index}`}>
+                      {testimonial.author}
+                    </div>
+                    <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-mobile-${index}`}>
+                      {testimonial.company}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

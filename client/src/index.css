@@ -130,12 +130,70 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .testimonial-columns {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+}
+
 @media (min-width: 1024px) {
   .testimonial-columns {
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
     padding: 0 2rem;
   }
+}
+
+/* Horizontal scrolling for mobile and small tablets */
+.testimonial-horizontal-scroll {
+  overflow: hidden;
+  height: 400px;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+@media (min-width: 640px) {
+  .testimonial-horizontal-scroll {
+    height: 500px;
+  }
+}
+
+.testimonial-horizontal-content {
+  display: flex;
+  gap: 1rem;
+  animation: scrollHorizontal 120s linear infinite;
+  width: max-content;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .testimonial-horizontal-content {
+    gap: 1.25rem;
+    padding: 1.5rem;
+  }
+}
+
+.testimonial-horizontal-card {
+  flex: 0 0 280px;
+  min-height: 180px;
+}
+
+@media (min-width: 640px) {
+  .testimonial-horizontal-card {
+    flex: 0 0 320px;
+    min-height: 200px;
+  }
+}
+
+@keyframes scrollHorizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.testimonial-horizontal-scroll:hover .testimonial-horizontal-content {
+  animation-play-state: paused;
 }
 
 .testimonial-column {
