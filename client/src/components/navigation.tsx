@@ -63,9 +63,10 @@ export function Navigation() {
               <img 
                 src={baltekLogo} 
                 alt="baltek" 
-                className="h-8 w-auto"
+                className="h-8 w-auto mr-3"
                 data-testid="logo-baltek"
               />
+              <div className="text-lg font-medium text-black">baltek</div>
             </div>
 
             {/* Navigation Links */}
