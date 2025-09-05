@@ -1,7 +1,42 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building2, UserCheck, CheckCircle, BarChart3, Users, Zap, Target } from "lucide-react";
-import { useRef, useEffect } from "react";
+import { Building2, UserCheck, CheckCircle, BarChart3, Users, Zap, Target, TrendingUp, Heart } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
+
+// Custom hook for count-up animation
+function useCountUp(end: number, duration: number = 2000, startAnimation: boolean = false) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startAnimation) return;
+
+    let startTime: number;
+    let animationId: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(end * easeOutCubic));
+
+      if (progress < 1) {
+        animationId = requestAnimationFrame(animate);
+      }
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [end, duration, startAnimation]);
+
+  return count;
+}
 
 export function PlatformShowcase() {
   const cardRef1 = useRef<HTMLDivElement>(null);
@@ -9,6 +44,38 @@ export function PlatformShowcase() {
   const cardRef3 = useRef<HTMLDivElement>(null);
   const cardRef4 = useRef<HTMLDivElement>(null);
   const cardRef5 = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [statsInView, setStatsInView] = useState(false);
+
+  // Hook instances for count animations
+  const companiesCount = useCountUp(50, 2000, statsInView);
+  const jobSeekersCount = useCountUp(2000, 2500, statsInView);
+  const matchesCount = useCountUp(1500, 2200, statsInView);
+  const satisfactionCount = useCountUp(98, 1800, statsInView);
+
+  useEffect(() => {
+    // Intersection observer for stats animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsInView) {
+            setStatsInView(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, [statsInView]);
 
   useEffect(() => {
     const cards = [cardRef1, cardRef2, cardRef3, cardRef4, cardRef5];
@@ -186,26 +253,108 @@ export function PlatformShowcase() {
           </Card>
         </div>
 
-        {/* Stats Section */}
-        <div className="py-8 sm:py-12 lg:py-16 bg-accent rounded-xl sm:rounded-2xl">
+        {/* Enhanced Stats Section */}
+        <div 
+          ref={statsRef}
+          className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-accent to-accent/80 rounded-xl sm:rounded-2xl shadow-lg border border-border/20"
+        >
           <div className="max-w-6xl mx-auto px-4 sm:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
-              <div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2" data-testid="text-stats-companies">50K+</div>
-                <div className="text-xs sm:text-sm lg:text-base text-muted-foreground">Active Companies</div>
+            <div className="text-center mb-8 sm:mb-12">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                Trusted by Industry Leaders
+              </h3>
+              <p className="text-muted-foreground text-sm sm:text-base">
+                Join thousands of companies and professionals already transforming their hiring process
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
+              {/* Companies Stat */}
+              <div 
+                className={`text-center group transition-all duration-700 transform hover:scale-105 ${
+                  statsInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                }`}
+                style={{ transitionDelay: '100ms' }}
+              >
+                <div className="flex justify-center mb-3">
+                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
+                    <Building2 className="h-6 w-6 text-primary" />
+                  </div>
+                </div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-2 transition-all duration-300 group-hover:scale-110" data-testid="text-stats-companies">
+                  {companiesCount}K+
+                </div>
+                <div className="text-sm sm:text-base text-muted-foreground font-medium">
+                  Active Companies
+                </div>
               </div>
-              <div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2" data-testid="text-stats-job-seekers">2M+</div>
-                <div className="text-xs sm:text-sm lg:text-base text-muted-foreground">Job Seekers</div>
+
+              {/* Job Seekers Stat */}
+              <div 
+                className={`text-center group transition-all duration-700 transform hover:scale-105 ${
+                  statsInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                }`}
+                style={{ transitionDelay: '200ms' }}
+              >
+                <div className="flex justify-center mb-3">
+                  <div className="p-3 bg-blue-500/10 rounded-full group-hover:bg-blue-500/20 transition-colors duration-300">
+                    <Users className="h-6 w-6 text-blue-500" />
+                  </div>
+                </div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-600 mb-2 transition-all duration-300 group-hover:scale-110" data-testid="text-stats-job-seekers">
+                  {Math.floor(jobSeekersCount / 1000)}M+
+                </div>
+                <div className="text-sm sm:text-base text-muted-foreground font-medium">
+                  Job Seekers
+                </div>
               </div>
-              <div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2" data-testid="text-stats-matches">1.5M+</div>
-                <div className="text-xs sm:text-sm lg:text-base text-muted-foreground">Successful Matches</div>
+
+              {/* Successful Matches Stat */}
+              <div 
+                className={`text-center group transition-all duration-700 transform hover:scale-105 ${
+                  statsInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                }`}
+                style={{ transitionDelay: '300ms' }}
+              >
+                <div className="flex justify-center mb-3">
+                  <div className="p-3 bg-green-500/10 rounded-full group-hover:bg-green-500/20 transition-colors duration-300">
+                    <TrendingUp className="h-6 w-6 text-green-500" />
+                  </div>
+                </div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-600 mb-2 transition-all duration-300 group-hover:scale-110" data-testid="text-stats-matches">
+                  {Math.floor(matchesCount / 100) / 10}M+
+                </div>
+                <div className="text-sm sm:text-base text-muted-foreground font-medium">
+                  Successful Matches
+                </div>
               </div>
-              <div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2" data-testid="text-stats-satisfaction">98%</div>
-                <div className="text-xs sm:text-sm lg:text-base text-muted-foreground">Satisfaction Rate</div>
+
+              {/* Satisfaction Rate Stat */}
+              <div 
+                className={`text-center group transition-all duration-700 transform hover:scale-105 ${
+                  statsInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                }`}
+                style={{ transitionDelay: '400ms' }}
+              >
+                <div className="flex justify-center mb-3">
+                  <div className="p-3 bg-red-500/10 rounded-full group-hover:bg-red-500/20 transition-colors duration-300">
+                    <Heart className="h-6 w-6 text-red-500" />
+                  </div>
+                </div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-2 transition-all duration-300 group-hover:scale-110" data-testid="text-stats-satisfaction">
+                  {satisfactionCount}%
+                </div>
+                <div className="text-sm sm:text-base text-muted-foreground font-medium">
+                  Satisfaction Rate
+                </div>
               </div>
+            </div>
+
+            {/* Animated pulse elements */}
+            <div className="absolute inset-0 pointer-events-none opacity-20">
+              <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
+              <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
           </div>
         </div>
