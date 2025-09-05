@@ -78,7 +78,7 @@ export function Navigation() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
+            <div className="hidden lg:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
               <a
                 href="#about"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
@@ -125,7 +125,7 @@ export function Navigation() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="p-2 md:hidden"
+                    className="p-2 lg:hidden"
                     data-testid="button-mobile-menu"
                   >
                     <Menu className="h-5 w-5" />
