@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 export function Navigation() {
   return (
     <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-      <nav className="bg-white/90 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-12 py-3 min-w-[840px]">
+      <nav className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-12 py-3 w-[85vw]">
         <div className="flex items-center justify-between space-x-16">
           {/* Logo */}
           <div className="flex items-center">
