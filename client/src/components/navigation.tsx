@@ -113,7 +113,7 @@ export function Navigation() {
             <div className="flex items-center space-x-3">
               <Button
                 onClick={() => setIsDownloadModalOpen(true)}
-                className="hidden md:flex bg-black text-white hover:bg-gray-800 text-sm font-medium px-4 lg:px-5 py-2 h-9 rounded-xl transition-colors"
+                className="hidden lg:flex bg-black text-white hover:bg-gray-800 text-sm font-medium px-4 lg:px-5 py-2 h-9 rounded-xl transition-colors"
                 data-testid="button-download"
               >
                 Download
@@ -121,11 +121,11 @@ export function Navigation() {
               
               {/* Mobile Menu */}
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild className="md:hidden">
+                <SheetTrigger asChild>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="p-2"
+                    className="p-2 md:hidden"
                     data-testid="button-mobile-menu"
                   >
                     <Menu className="h-5 w-5" />
