@@ -33,26 +33,6 @@ export function Navigation() {
     }
   }, [isDownloadModalOpen]);
 
-  useEffect(() => {
-    // Prevent layout shift when modal opens by calculating scrollbar width
-    const preventLayoutShift = () => {
-      if (isDownloadModalOpen) {
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-      } else {
-        document.documentElement.style.removeProperty('--scrollbar-width');
-        document.body.style.paddingRight = '';
-      }
-    };
-
-    preventLayoutShift();
-    
-    return () => {
-      document.documentElement.style.removeProperty('--scrollbar-width');
-      document.body.style.paddingRight = '';
-    };
-  }, [isDownloadModalOpen]);
 
   const generateQRCodes = async () => {
     try {

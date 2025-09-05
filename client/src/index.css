@@ -344,8 +344,16 @@
   );
 }
 
-/* Prevent layout shift when modal opens */
-body[data-scroll-locked] {
-  padding-right: var(--scrollbar-width, 0px);
+/* Prevent layout shift by always reserving scrollbar space */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Fallback for browsers that don't support scrollbar-gutter */
+@supports not (scrollbar-gutter: stable) {
+  body {
+    padding-right: calc(100vw - 100%);
+    margin-right: calc(-1 * (100vw - 100%));
+  }
 }
 
