@@ -64,18 +64,18 @@ export function Navigation() {
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-10">
               <a 
-                href="#platforms"
-                className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
-                data-testid="link-platforms"
-              >
-                Platforms
-              </a>
-              <a 
                 href="#about"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
-                data-testid="link-about"
+                data-testid="link-home"
               >
-                About
+                Home
+              </a>
+              <a 
+                href="#platforms"
+                className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
+                data-testid="link-solutions"
+              >
+                Solutions
               </a>
               <a 
                 href="#reviews"
