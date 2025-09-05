@@ -3,7 +3,7 @@ import backgroundImage from "@assets/generated_images/Professional_office_backgr
 
 export function HeroSection() {
   return (
-    <section className="relative h-[50vh] pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="about" className="relative h-[50vh] pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"

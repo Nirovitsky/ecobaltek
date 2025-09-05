@@ -64,32 +64,32 @@ export function Navigation() {
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-10">
               <a 
-                href="#features"
+                href="#platforms"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
-                data-testid="link-features"
+                data-testid="link-platforms"
               >
-                Features
+                Platforms
               </a>
               <a 
-                href="#pricing"
+                href="#about"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
-                data-testid="link-pricing"
+                data-testid="link-about"
               >
-                Pricing
+                About
               </a>
               <a 
-                href="#changelog"
+                href="#reviews"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
-                data-testid="link-changelog"
+                data-testid="link-reviews"
               >
-                Changelog
+                Reviews
               </a>
               <a 
-                href="#docs"
+                href="#contact"
                 className="text-sm text-gray-600 hover:text-black transition-colors font-medium"
-                data-testid="link-docs"
+                data-testid="link-contact"
               >
-                Docs
+                Contact
               </a>
             </div>
             
