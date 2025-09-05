@@ -63,7 +63,7 @@ export function Navigation() {
 
   return (
     <>
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[60] w-full max-w-[95vw] px-4">
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-[95vw] px-4">
         <nav className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-lg px-4 sm:px-8 lg:px-12 py-3 mx-auto max-w-6xl">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -128,14 +128,10 @@ export function Navigation() {
                     className="p-2 xl:hidden"
                     data-testid="button-mobile-menu"
                   >
-                    <div className="w-5 h-5 flex flex-col justify-center items-center">
-                      <div className={`w-4 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
-                      <div className={`w-4 h-0.5 bg-current transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-                      <div className={`w-4 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} />
-                    </div>
+                    <Menu className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] sm:w-[400px] z-[50]">
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                   <SheetHeader>
                     <SheetTitle className="flex items-center">
                       <img 
