@@ -6,12 +6,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Smartphone, Tablet, X } from "lucide-react";
+import { Smartphone, Tablet, Building2, UserCheck, Apple } from "lucide-react";
 
 export function Navigation() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
-  const [iosQrCode, setIosQrCode] = useState<string>("");
-  const [androidQrCode, setAndroidQrCode] = useState<string>("");
+  const [qrCodes, setQrCodes] = useState({
+    baltekIos: "",
+    baltekAndroid: "",
+    asmanIos: "",
+    asmanAndroid: ""
+  });
 
   useEffect(() => {
     // Generate QR codes when modal opens
@@ -22,16 +26,24 @@ export function Navigation() {
 
   const generateQRCodes = async () => {
     try {
-      // App Store URLs (replace with your actual app URLs)
-      const iosUrl = "https://apps.apple.com/app/your-app/id123456789";
-      const androidUrl = "https://play.google.com/store/apps/details?id=com.yourcompany.yourapp";
+      // App Store URLs for both apps (replace with your actual app URLs)
+      const baltekIosUrl = "https://apps.apple.com/app/baltek-business/id123456789";
+      const baltekAndroidUrl = "https://play.google.com/store/apps/details?id=com.baltek.business";
+      const asmanIosUrl = "https://apps.apple.com/app/asman/id987654321";
+      const asmanAndroidUrl = "https://play.google.com/store/apps/details?id=com.asman.app";
       
-      // For now, use QR.io service to generate QR codes
-      const iosQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(iosUrl)}`;
-      const androidQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(androidUrl)}`;
+      // Generate QR codes using QR Server API
+      const baltekIosQr = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(baltekIosUrl)}`;
+      const baltekAndroidQr = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(baltekAndroidUrl)}`;
+      const asmanIosQr = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(asmanIosUrl)}`;
+      const asmanAndroidQr = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(asmanAndroidUrl)}`;
       
-      setIosQrCode(iosQrUrl);
-      setAndroidQrCode(androidQrUrl);
+      setQrCodes({
+        baltekIos: baltekIosQr,
+        baltekAndroid: baltekAndroidQr,
+        asmanIos: asmanIosQr,
+        asmanAndroid: asmanAndroidQr
+      });
     } catch (error) {
       console.error('Error generating QR codes:', error);
     }
@@ -97,77 +109,157 @@ export function Navigation() {
 
       {/* Download Modal */}
       <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-center text-xl font-semibold mb-2">
-              Download Our App
+        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto">
+          <DialogHeader className="text-center pb-6">
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">
+              Download Our Apps
             </DialogTitle>
-            <p className="text-center text-gray-600 text-sm">
-              Scan the QR code to download the app on your device
+            <p className="text-gray-600 text-sm max-w-lg mx-auto">
+              Scan the QR codes below to download our apps on your preferred platform
             </p>
           </DialogHeader>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6">
-            {/* iOS QR Code */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="flex items-center space-x-2 mb-2">
-                <Smartphone className="h-5 w-5 text-gray-600" />
-                <span className="font-medium text-gray-900">iOS</span>
+          <div className="space-y-8">
+            {/* baltek business App */}
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div className="flex items-center justify-center mb-6">
+                <Building2 className="h-6 w-6 text-primary mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">baltek business</h3>
+                <span className="ml-3 px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
+                  For Employers
+                </span>
               </div>
               
-              <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                {iosQrCode ? (
-                  <img 
-                    src={iosQrCode} 
-                    alt="iOS App QR Code" 
-                    className="w-32 h-32"
-                    data-testid="qr-ios"
-                  />
-                ) : (
-                  <div className="w-32 h-32 bg-gray-100 rounded flex items-center justify-center">
-                    <span className="text-xs text-gray-500">Loading...</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* baltek iOS */}
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Apple className="h-5 w-5 text-gray-700" />
+                    <span className="font-medium text-gray-900">iOS</span>
                   </div>
-                )}
+                  
+                  <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm group-hover:shadow-md transition-shadow duration-200">
+                    {qrCodes.baltekIos ? (
+                      <img 
+                        src={qrCodes.baltekIos} 
+                        alt="baltek business iOS QR Code" 
+                        className="w-40 h-40"
+                        data-testid="qr-baltek-ios"
+                      />
+                    ) : (
+                      <div className="w-40 h-40 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-sm text-gray-500">Loading...</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-xs text-gray-500 text-center mt-3">
+                    iPhone & iPad
+                  </p>
+                </div>
+
+                {/* baltek Android */}
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Tablet className="h-5 w-5 text-gray-700" />
+                    <span className="font-medium text-gray-900">Android</span>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm group-hover:shadow-md transition-shadow duration-200">
+                    {qrCodes.baltekAndroid ? (
+                      <img 
+                        src={qrCodes.baltekAndroid} 
+                        alt="baltek business Android QR Code" 
+                        className="w-40 h-40"
+                        data-testid="qr-baltek-android"
+                      />
+                    ) : (
+                      <div className="w-40 h-40 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-sm text-gray-500">Loading...</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-xs text-gray-500 text-center mt-3">
+                    Android devices
+                  </p>
+                </div>
               </div>
-              
-              <p className="text-xs text-gray-500 text-center">
-                iPhone & iPad
-              </p>
             </div>
 
-            {/* Android QR Code */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="flex items-center space-x-2 mb-2">
-                <Tablet className="h-5 w-5 text-gray-600" />
-                <span className="font-medium text-gray-900">Android</span>
+            {/* Asman App */}
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 border border-blue-100 shadow-sm">
+              <div className="flex items-center justify-center mb-6">
+                <UserCheck className="h-6 w-6 text-secondary mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">Asman</h3>
+                <span className="ml-3 px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">
+                  For Job Seekers
+                </span>
               </div>
               
-              <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                {androidQrCode ? (
-                  <img 
-                    src={androidQrCode} 
-                    alt="Android App QR Code" 
-                    className="w-32 h-32"
-                    data-testid="qr-android"
-                  />
-                ) : (
-                  <div className="w-32 h-32 bg-gray-100 rounded flex items-center justify-center">
-                    <span className="text-xs text-gray-500">Loading...</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Asman iOS */}
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Apple className="h-5 w-5 text-gray-700" />
+                    <span className="font-medium text-gray-900">iOS</span>
                   </div>
-                )}
+                  
+                  <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm group-hover:shadow-md transition-shadow duration-200">
+                    {qrCodes.asmanIos ? (
+                      <img 
+                        src={qrCodes.asmanIos} 
+                        alt="Asman iOS QR Code" 
+                        className="w-40 h-40"
+                        data-testid="qr-asman-ios"
+                      />
+                    ) : (
+                      <div className="w-40 h-40 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-sm text-gray-500">Loading...</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-xs text-gray-500 text-center mt-3">
+                    iPhone & iPad
+                  </p>
+                </div>
+
+                {/* Asman Android */}
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Tablet className="h-5 w-5 text-gray-700" />
+                    <span className="font-medium text-gray-900">Android</span>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm group-hover:shadow-md transition-shadow duration-200">
+                    {qrCodes.asmanAndroid ? (
+                      <img 
+                        src={qrCodes.asmanAndroid} 
+                        alt="Asman Android QR Code" 
+                        className="w-40 h-40"
+                        data-testid="qr-asman-android"
+                      />
+                    ) : (
+                      <div className="w-40 h-40 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-sm text-gray-500">Loading...</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-xs text-gray-500 text-center mt-3">
+                    Android devices
+                  </p>
+                </div>
               </div>
-              
-              <p className="text-xs text-gray-500 text-center">
-                Android devices
-              </p>
             </div>
           </div>
 
-          <div className="flex justify-center pt-4">
+          <div className="flex justify-center pt-8">
             <Button
               variant="outline"
               onClick={() => setIsDownloadModalOpen(false)}
-              className="px-6"
+              className="px-8 py-2 rounded-xl font-medium border-gray-300 hover:bg-gray-50"
               data-testid="button-close-modal"
             >
               Close
