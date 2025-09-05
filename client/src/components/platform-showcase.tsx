@@ -1,8 +1,55 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Building2, UserCheck, CheckCircle, BarChart3, Users, Zap, Target } from "lucide-react";
+import { useRef, useEffect } from "react";
 
 export function PlatformShowcase() {
+  const cardRef1 = useRef<HTMLDivElement>(null);
+  const cardRef2 = useRef<HTMLDivElement>(null);
+  const cardRef3 = useRef<HTMLDivElement>(null);
+  const cardRef4 = useRef<HTMLDivElement>(null);
+  const cardRef5 = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const cards = [cardRef1, cardRef2, cardRef3, cardRef4, cardRef5];
+    
+    const handleMouseMove = (e: MouseEvent, card: HTMLDivElement) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    };
+
+    const handleMouseEnter = (card: HTMLDivElement) => {
+      card.style.setProperty('--opacity', '1');
+    };
+
+    const handleMouseLeave = (card: HTMLDivElement) => {
+      card.style.setProperty('--opacity', '0');
+    };
+
+    cards.forEach((cardRef) => {
+      const card = cardRef.current;
+      if (card) {
+        const onMouseMove = (e: MouseEvent) => handleMouseMove(e, card);
+        const onMouseEnter = () => handleMouseEnter(card);
+        const onMouseLeave = () => handleMouseLeave(card);
+
+        card.addEventListener('mousemove', onMouseMove);
+        card.addEventListener('mouseenter', onMouseEnter);
+        card.addEventListener('mouseleave', onMouseLeave);
+
+        return () => {
+          card.removeEventListener('mousemove', onMouseMove);
+          card.removeEventListener('mouseenter', onMouseEnter);
+          card.removeEventListener('mouseleave', onMouseLeave);
+        };
+      }
+    });
+  }, []);
+
   return (
     <section id="platforms" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -17,8 +64,18 @@ export function PlatformShowcase() {
 
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {/* baltek business Platform */}
-          <Card className="border border-gray-200" data-testid="card-baltek-business">
-            <CardContent className="p-6">
+          <Card 
+            ref={cardRef1}
+            className="relative border border-gray-200 cursor-gradient-card" 
+            data-testid="card-baltek-business"
+            style={{
+              '--mouse-x': '0px',
+              '--mouse-y': '0px',
+              '--opacity': '0'
+            } as React.CSSProperties}
+          >
+            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
+            <CardContent className="relative p-6 bg-white rounded-lg">
               <div className="flex items-center mb-4">
                 <Building2 className="text-gray-600 mr-3 h-6 w-6" />
                 <h3 className="text-xl font-medium text-gray-900" data-testid="text-baltek-title">baltek business</h3>
@@ -45,8 +102,18 @@ export function PlatformShowcase() {
           </Card>
 
           {/* Asman Platform */}
-          <Card className="border border-gray-200" data-testid="card-asman">
-            <CardContent className="p-6">
+          <Card 
+            ref={cardRef2}
+            className="relative border border-gray-200 cursor-gradient-card" 
+            data-testid="card-asman"
+            style={{
+              '--mouse-x': '0px',
+              '--mouse-y': '0px',
+              '--opacity': '0'
+            } as React.CSSProperties}
+          >
+            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
+            <CardContent className="relative p-6 bg-white rounded-lg">
               <div className="flex items-center mb-4">
                 <UserCheck className="text-gray-600 mr-3 h-6 w-6" />
                 <h3 className="text-xl font-medium text-gray-900" data-testid="text-asman-title">Asman</h3>
@@ -99,8 +166,17 @@ export function PlatformShowcase() {
 
         {/* Features Section */}
         <div className="grid md:grid-cols-3 gap-6 mt-16">
-          <Card className="border border-gray-200">
-            <CardContent className="p-6">
+          <Card 
+            ref={cardRef3}
+            className="relative border border-gray-200 cursor-gradient-card"
+            style={{
+              '--mouse-x': '0px',
+              '--mouse-y': '0px',
+              '--opacity': '0'
+            } as React.CSSProperties}
+          >
+            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
+            <CardContent className="relative p-6 bg-white rounded-lg">
               <BarChart3 className="text-gray-600 h-6 w-6 mb-3" />
               <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-ai-title">AI Intelligence</h3>
               <p className="text-gray-600 leading-relaxed" data-testid="text-feature-ai-description">
@@ -109,8 +185,17 @@ export function PlatformShowcase() {
             </CardContent>
           </Card>
 
-          <Card className="border border-gray-200">
-            <CardContent className="p-6">
+          <Card 
+            ref={cardRef4}
+            className="relative border border-gray-200 cursor-gradient-card"
+            style={{
+              '--mouse-x': '0px',
+              '--mouse-y': '0px',
+              '--opacity': '0'
+            } as React.CSSProperties}
+          >
+            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
+            <CardContent className="relative p-6 bg-white rounded-lg">
               <Users className="text-gray-600 h-6 w-6 mb-3" />
               <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-familiar-title">Feels Familiar</h3>
               <p className="text-gray-600 leading-relaxed" data-testid="text-feature-familiar-description">
@@ -119,8 +204,17 @@ export function PlatformShowcase() {
             </CardContent>
           </Card>
 
-          <Card className="border border-gray-200">
-            <CardContent className="p-6">
+          <Card 
+            ref={cardRef5}
+            className="relative border border-gray-200 cursor-gradient-card"
+            style={{
+              '--mouse-x': '0px',
+              '--mouse-y': '0px',
+              '--opacity': '0'
+            } as React.CSSProperties}
+          >
+            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none cursor-gradient-border"></div>
+            <CardContent className="relative p-6 bg-white rounded-lg">
               <Zap className="text-gray-600 h-6 w-6 mb-3" />
               <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-privacy-title">Privacy First</h3>
               <p className="text-gray-600 leading-relaxed" data-testid="text-feature-privacy-description">
