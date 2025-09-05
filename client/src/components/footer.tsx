@@ -2,18 +2,34 @@ export function Footer() {
   return (
     <>
       {/* Trusted By Section */}
-      <section className="py-12 bg-background">
+      <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-muted-foreground text-sm uppercase tracking-wider font-medium mb-8" data-testid="text-trusted-by-label">
+          <p className="text-muted-foreground text-sm uppercase tracking-wider font-medium mb-12" data-testid="text-trusted-by-label">
             Trusted by leading companies
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            <div className="text-2xl font-bold text-muted-foreground" data-testid="text-company-google">Google</div>
-            <div className="text-2xl font-bold text-muted-foreground" data-testid="text-company-microsoft">Microsoft</div>
-            <div className="text-2xl font-bold text-muted-foreground" data-testid="text-company-apple">Apple</div>
-            <div className="text-2xl font-bold text-muted-foreground" data-testid="text-company-meta">Meta</div>
-            <div className="text-2xl font-bold text-muted-foreground" data-testid="text-company-netflix">Netflix</div>
-            <div className="text-2xl font-bold text-muted-foreground" data-testid="text-company-uber">Uber</div>
+          
+          {/* Circular Animation Container */}
+          <div className="relative w-full h-80 flex items-center justify-center">
+            <div className="circular-companies-container">
+              <div className="company-orbit company-orbit-1">
+                <div className="company-item" data-testid="text-company-google">Google</div>
+              </div>
+              <div className="company-orbit company-orbit-2">
+                <div className="company-item" data-testid="text-company-microsoft">Microsoft</div>
+              </div>
+              <div className="company-orbit company-orbit-3">
+                <div className="company-item" data-testid="text-company-apple">Apple</div>
+              </div>
+              <div className="company-orbit company-orbit-4">
+                <div className="company-item" data-testid="text-company-meta">Meta</div>
+              </div>
+              <div className="company-orbit company-orbit-5">
+                <div className="company-item" data-testid="text-company-netflix">Netflix</div>
+              </div>
+              <div className="company-orbit company-orbit-6">
+                <div className="company-item" data-testid="text-company-uber">Uber</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
