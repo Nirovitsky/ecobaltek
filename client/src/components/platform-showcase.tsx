@@ -15,50 +15,28 @@ export function PlatformShowcase() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {/* baltek business Platform */}
-          <Card className="platform-card shadow-lg border-0" data-testid="card-baltek-business">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="bg-primary/10 p-3 rounded-xl mr-4">
-                  <Building2 className="text-primary text-2xl h-8 w-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary" data-testid="text-baltek-title">baltek business</h3>
+          <Card className="border border-gray-200" data-testid="card-baltek-business">
+            <CardContent className="p-6">
+              <div className="flex items-center mb-4">
+                <Building2 className="text-gray-600 mr-3 h-6 w-6" />
+                <h3 className="text-xl font-medium text-gray-900" data-testid="text-baltek-title">baltek business</h3>
               </div>
               
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
-                alt="Modern office workspace" 
-                className="rounded-xl mb-6 w-full h-48 object-cover"
-                data-testid="img-baltek-workspace"
-              />
-              
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed" data-testid="text-baltek-description">
-                Streamlined hiring platform for businesses to find, evaluate, and hire top talent efficiently. 
-                Advanced analytics, AI-powered matching, and seamless candidate management.
+              <p className="text-gray-600 mb-6 leading-relaxed" data-testid="text-baltek-description">
+                Streamlined hiring platform for businesses to find, evaluate, and hire top talent efficiently.
               </p>
               
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center">
-                  <CheckCircle className="text-primary mr-3 h-5 w-5" />
-                  <span>AI-powered candidate matching</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="text-primary mr-3 h-5 w-5" />
-                  <span>Advanced analytics dashboard</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="text-primary mr-3 h-5 w-5" />
-                  <span>Streamlined interview process</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="text-primary mr-3 h-5 w-5" />
-                  <span>Team collaboration tools</span>
-                </div>
+              <div className="space-y-2 mb-6">
+                <div className="text-gray-600">• AI-powered candidate matching</div>
+                <div className="text-gray-600">• Advanced analytics dashboard</div>
+                <div className="text-gray-600">• Streamlined interview process</div>
+                <div className="text-gray-600">• Team collaboration tools</div>
               </div>
               
               <Button 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 w-full"
+                className="bg-black text-white w-full"
                 data-testid="button-start-hiring"
               >
                 Start Hiring Today
@@ -67,48 +45,26 @@ export function PlatformShowcase() {
           </Card>
 
           {/* Asman Platform */}
-          <Card className="platform-card shadow-lg border-0" data-testid="card-asman">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="bg-secondary/10 p-3 rounded-xl mr-4">
-                  <UserCheck className="text-secondary text-2xl h-8 w-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary" data-testid="text-asman-title">Asman</h3>
+          <Card className="border border-gray-200" data-testid="card-asman">
+            <CardContent className="p-6">
+              <div className="flex items-center mb-4">
+                <UserCheck className="text-gray-600 mr-3 h-6 w-6" />
+                <h3 className="text-xl font-medium text-gray-900" data-testid="text-asman-title">Asman</h3>
               </div>
               
-              <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
-                alt="Professional working on laptop" 
-                className="rounded-xl mb-6 w-full h-48 object-cover"
-                data-testid="img-asman-workspace"
-              />
-              
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed" data-testid="text-asman-description">
-                Personalized job discovery platform for professionals seeking their next career opportunity. 
-                Smart recommendations, career insights, and direct connections with employers.
+              <p className="text-gray-600 mb-6 leading-relaxed" data-testid="text-asman-description">
+                Personalized job discovery platform for professionals seeking their next career opportunity.
               </p>
               
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center">
-                  <CheckCircle className="text-secondary mr-3 h-5 w-5" />
-                  <span>Personalized job recommendations</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="text-secondary mr-3 h-5 w-5" />
-                  <span>Career insights and analytics</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="text-secondary mr-3 h-5 w-5" />
-                  <span>Direct employer connections</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="text-secondary mr-3 h-5 w-5" />
-                  <span>Professional profile builder</span>
-                </div>
+              <div className="space-y-2 mb-6">
+                <div className="text-gray-600">• Personalized job recommendations</div>
+                <div className="text-gray-600">• Career insights and analytics</div>
+                <div className="text-gray-600">• Direct employer connections</div>
+                <div className="text-gray-600">• Professional profile builder</div>
               </div>
               
               <Button 
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full"
+                className="bg-black text-white w-full"
                 data-testid="button-find-dream-job"
               >
                 Find Your Dream Job
@@ -142,38 +98,32 @@ export function PlatformShowcase() {
         </div>
 
         {/* Features Section */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-8">
-              <div className="bg-primary/10 p-3 rounded-xl w-fit mb-4">
-                <BarChart3 className="text-primary h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3" data-testid="text-feature-ai-title">AI Intelligence</h3>
-              <p className="text-muted-foreground leading-relaxed" data-testid="text-feature-ai-description">
+        <div className="grid md:grid-cols-3 gap-6 mt-16">
+          <Card className="border border-gray-200">
+            <CardContent className="p-6">
+              <BarChart3 className="text-gray-600 h-6 w-6 mb-3" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-ai-title">AI Intelligence</h3>
+              <p className="text-gray-600 leading-relaxed" data-testid="text-feature-ai-description">
                 Powered by advanced AI models, our platforms provide smart matching and intelligent recommendations for both businesses and job seekers.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-8">
-              <div className="bg-secondary/10 p-3 rounded-xl w-fit mb-4">
-                <Users className="text-secondary h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3" data-testid="text-feature-familiar-title">Feels Familiar</h3>
-              <p className="text-muted-foreground leading-relaxed" data-testid="text-feature-familiar-description">
+          <Card className="border border-gray-200">
+            <CardContent className="p-6">
+              <Users className="text-gray-600 h-6 w-6 mb-3" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-familiar-title">Feels Familiar</h3>
+              <p className="text-gray-600 leading-relaxed" data-testid="text-feature-familiar-description">
                 Intuitive interface design that feels natural. Import your existing data and start connecting with opportunities immediately.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-8">
-              <div className="bg-green-500/10 p-3 rounded-xl w-fit mb-4">
-                <Zap className="text-green-600 h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3" data-testid="text-feature-privacy-title">Privacy First</h3>
-              <p className="text-muted-foreground leading-relaxed" data-testid="text-feature-privacy-description">
+          <Card className="border border-gray-200">
+            <CardContent className="p-6">
+              <Zap className="text-gray-600 h-6 w-6 mb-3" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2" data-testid="text-feature-privacy-title">Privacy First</h3>
+              <p className="text-gray-600 leading-relaxed" data-testid="text-feature-privacy-description">
                 Your data is protected with enterprise-grade security. SOC 2 certified with complete privacy controls and data protection.
               </p>
             </CardContent>
