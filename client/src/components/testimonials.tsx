@@ -201,31 +201,38 @@ export function TestimonialsSection() {
       {/* Desktop & Tablet: Responsive column layout */}
       <div className="testimonial-columns-container hidden lg:block">
         <div className="testimonial-columns">
-          {columns.map((columnTestimonials, columnIndex) => (
-            <div 
-              key={columnIndex}
-              className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'}`}
-            >
+          {columns.map((columnTestimonials, columnIndex) => {
+            const visibilityClass = 
+              columnIndex === 4 ? 'hidden 2xl:block' :
+              columnIndex === 3 ? 'hidden xl:block' :
+              columnIndex === 2 ? 'hidden md:block' :
+              '';
+            
+            return (
+              <div 
+                key={columnIndex}
+                className={`testimonial-column ${columnIndex % 2 === 0 ? 'scroll-down' : 'scroll-up'} ${visibilityClass}`}
+              >
               <div className="testimonial-column-content">
                 {/* Quadruple the content for seamless infinite scroll */}
                 {[...columnTestimonials, ...columnTestimonials, ...columnTestimonials, ...columnTestimonials].map((testimonial, index) => (
                   <div 
                     key={`${columnIndex}-${index}`}
-                    className="cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-4 sm:p-5 lg:p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-4 sm:mb-5 lg:mb-6" 
+                    className="cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20 mb-6" 
                     data-testid={`testimonial-card-${columnIndex}-${index}`}
                   >
-                    <p className="text-foreground mb-3 sm:mb-4 lg:mb-6 leading-relaxed text-xs sm:text-sm" data-testid={`text-testimonial-quote-${columnIndex}-${index}`}>
+                    <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-${columnIndex}-${index}`}>
                       {testimonial.quote}
                     </p>
                     <div className="flex items-center">
                       <img 
                         src={testimonial.avatar}
                         alt={testimonial.author} 
-                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-2 sm:mr-3 object-cover"
+                        className="w-10 h-10 rounded-full mr-3 object-cover"
                         data-testid={`img-testimonial-avatar-${columnIndex}-${index}`}
                       />
                       <div>
-                        <div className="font-semibold text-foreground text-xs sm:text-sm" data-testid={`text-testimonial-author-${columnIndex}-${index}`}>
+                        <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-${columnIndex}-${index}`}>
                           {testimonial.author}
                         </div>
                         <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-${columnIndex}-${index}`}>
@@ -236,8 +243,9 @@ export function TestimonialsSection() {
                   </div>
                 ))}
               </div>
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -249,21 +257,21 @@ export function TestimonialsSection() {
             {[...mobileCards, ...mobileCards].map((testimonial, index) => (
               <div 
                 key={`mobile-${index}`}
-                className="testimonial-horizontal-card cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-4 sm:p-5 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20" 
+                className="testimonial-horizontal-card cursor-testimonial-card middle-column-card bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:opacity-100 opacity-80 hover:shadow-lg hover:border-primary/20" 
                 data-testid={`testimonial-card-mobile-${index}`}
               >
-                <p className="text-foreground mb-3 sm:mb-4 leading-relaxed text-xs sm:text-sm" data-testid={`text-testimonial-quote-mobile-${index}`}>
+                <p className="text-foreground mb-6 leading-relaxed text-sm" data-testid={`text-testimonial-quote-mobile-${index}`}>
                   {testimonial.quote}
                 </p>
                 <div className="flex items-center">
                   <img 
                     src={testimonial.avatar}
                     alt={testimonial.author} 
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-2 sm:mr-3 object-cover"
+                    className="w-10 h-10 rounded-full mr-3 object-cover"
                     data-testid={`img-testimonial-avatar-mobile-${index}`}
                   />
                   <div>
-                    <div className="font-semibold text-foreground text-xs sm:text-sm" data-testid={`text-testimonial-author-mobile-${index}`}>
+                    <div className="font-semibold text-foreground text-sm" data-testid={`text-testimonial-author-mobile-${index}`}>
                       {testimonial.author}
                     </div>
                     <div className="text-muted-foreground text-xs" data-testid={`text-testimonial-company-mobile-${index}`}>

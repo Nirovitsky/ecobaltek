@@ -120,37 +120,17 @@
   gap: 1.5rem;
   padding: 0 1rem;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media (min-width: 640px) {
-  .testimonial-columns {
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .testimonial-columns {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-  }
+  grid-template-columns: repeat(5, 1fr);
 }
 
 @media (min-width: 1024px) {
   .testimonial-columns {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
     padding: 0 1.5rem;
   }
 }
 
 @media (min-width: 1280px) {
   .testimonial-columns {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
     padding: 0 2rem;
   }
 }
@@ -190,18 +170,10 @@
 }
 
 .testimonial-horizontal-card {
-  flex: 0 0 280px;
-  height: 220px;
-  width: 280px;
+  flex: 0 0 300px;
+  height: 240px;
+  width: 300px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media (min-width: 640px) {
-  .testimonial-horizontal-card {
-    flex: 0 0 320px;
-    height: 240px;
-    width: 320px;
-  }
 }
 
 @keyframes scrollHorizontal {
@@ -250,8 +222,8 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.5rem;
-  height: 220px;
-  max-height: 220px;
+  height: 240px;
+  max-height: 240px;
   width: 100%;
   max-width: 300px;
   display: flex;
@@ -260,23 +232,6 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0.8;
   overflow: hidden;
-}
-
-@media (min-width: 640px) {
-  .cursor-testimonial-card {
-    height: 240px;
-    max-height: 240px;
-    padding: 1.5rem;
-    max-width: none;
-  }
-}
-
-@media (min-width: 1024px) {
-  .cursor-testimonial-card {
-    height: 250px;
-    max-height: 250px;
-    padding: 1.75rem;
-  }
 }
 
 .cursor-testimonial-card:hover {
