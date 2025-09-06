@@ -194,144 +194,167 @@ export function Navigation() {
         </nav>
       </div>
 
-      {/* Download Modal - Apple Glass Design */}
+      {/* Download Modal - Modern Design */}
       <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
-        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto bg-white/80 backdrop-blur-2xl border-0 shadow-2xl">
-          <DialogHeader className="text-center pb-8">
-            <DialogTitle className="text-3xl font-semibold text-gray-900 mb-4">
-              Download Our Apps
+        <DialogContent className="max-w-5xl w-[95vw] max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-50 via-white to-gray-50 border-0 shadow-2xl rounded-3xl">
+          <DialogHeader className="text-center pb-12">
+            <DialogTitle className="text-4xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent mb-6">
+              Get Our Apps
             </DialogTitle>
-            <p className="text-gray-600 text-base max-w-lg mx-auto">
-              Scan the QR codes below to download our apps on your preferred platform
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+              Download our mobile apps to access all features on the go
             </p>
           </DialogHeader>
 
-          <div className="space-y-10">
+          <div className="space-y-16">
             {/* baltek business App */}
             <div className="text-center">
-              <div className="flex items-center justify-center mb-8">
-                <Building2 className="h-6 w-6 text-gray-700 mr-3" />
-                <h3 className="text-2xl font-semibold text-gray-900">
+              <div className="inline-flex items-center justify-center mb-10 bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-3 rounded-2xl">
+                <Building2 className="h-7 w-7 text-blue-600 mr-4" />
+                <h3 className="text-2xl font-bold text-gray-900">
                   baltek business
                 </h3>
-                <span className="ml-3 px-3 py-1 bg-black/10 text-gray-700 text-xs font-medium rounded-full">
-                  For Employers
+                <span className="ml-4 px-4 py-1.5 bg-blue-600 text-white text-sm font-semibold rounded-full">
+                  Employers
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 justify-items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 justify-items-center max-w-3xl mx-auto">
                 {/* baltek iOS */}
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <Apple className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900 text-lg">iOS</span>
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="p-2 bg-gray-900 rounded-xl">
+                      <Apple className="h-6 w-6 text-white" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-xl">iOS App</span>
                   </div>
 
                   {qrCodes.baltekIos ? (
-                    <img
-                      src={qrCodes.baltekIos}
-                      alt="baltek business iOS QR Code"
-                      className="w-40 h-40 border-2 border-gray-300"
-                      data-testid="qr-baltek-ios"
-                    />
+                    <div className="p-2 bg-white rounded-2xl shadow-lg ring-1 ring-gray-200 group-hover:shadow-xl transition-shadow duration-300">
+                      <img
+                        src={qrCodes.baltekIos}
+                        alt="baltek business iOS QR Code"
+                        className="w-44 h-44 rounded-lg"
+                        data-testid="qr-baltek-ios"
+                      />
+                    </div>
                   ) : (
-                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
-                      <span className="text-sm text-gray-500">Loading...</span>
+                    <div className="w-48 h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl shadow-lg ring-1 ring-gray-200 flex items-center justify-center">
+                      <span className="text-base text-gray-500 font-medium">Generating...</span>
                     </div>
                   )}
 
-                  <p className="text-sm text-gray-600 mt-3">
+                  <p className="text-base text-gray-500 mt-4 font-medium">
                     iPhone & iPad
                   </p>
                 </div>
 
                 {/* baltek Android */}
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <Tablet className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900 text-lg">Android</span>
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="p-2 bg-green-600 rounded-xl">
+                      <Tablet className="h-6 w-6 text-white" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-xl">Android</span>
                   </div>
 
                   {qrCodes.baltekAndroid ? (
-                    <img
-                      src={qrCodes.baltekAndroid}
-                      alt="baltek business Android QR Code"
-                      className="w-40 h-40 border-2 border-gray-300"
-                      data-testid="qr-baltek-android"
-                    />
+                    <div className="p-2 bg-white rounded-2xl shadow-lg ring-1 ring-gray-200 group-hover:shadow-xl transition-shadow duration-300">
+                      <img
+                        src={qrCodes.baltekAndroid}
+                        alt="baltek business Android QR Code"
+                        className="w-44 h-44 rounded-lg"
+                        data-testid="qr-baltek-android"
+                      />
+                    </div>
                   ) : (
-                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
-                      <span className="text-sm text-gray-500">Loading...</span>
+                    <div className="w-48 h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl shadow-lg ring-1 ring-gray-200 flex items-center justify-center">
+                      <span className="text-base text-gray-500 font-medium">Generating...</span>
                     </div>
                   )}
 
-                  <p className="text-sm text-gray-600 mt-3">
+                  <p className="text-base text-gray-500 mt-4 font-medium">
                     Android devices
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Divider */}
-            <div className="border-t border-gray-300 my-8"></div>
+            {/* Modern Divider */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+              </div>
+              <div className="relative flex justify-center">
+                <span className="bg-white px-6 py-2 text-sm text-gray-500 font-medium rounded-full">or</span>
+              </div>
+            </div>
 
             {/* Asman App */}
             <div className="text-center">
-              <div className="flex items-center justify-center mb-8">
-                <UserCheck className="h-6 w-6 text-gray-700 mr-3" />
-                <h3 className="text-2xl font-semibold text-gray-900">Asman</h3>
-                <span className="ml-3 px-3 py-1 bg-black/10 text-gray-700 text-xs font-medium rounded-full">
-                  For Job Seekers
+              <div className="inline-flex items-center justify-center mb-10 bg-gradient-to-r from-emerald-50 to-teal-50 px-6 py-3 rounded-2xl">
+                <UserCheck className="h-7 w-7 text-emerald-600 mr-4" />
+                <h3 className="text-2xl font-bold text-gray-900">Asman</h3>
+                <span className="ml-4 px-4 py-1.5 bg-emerald-600 text-white text-sm font-semibold rounded-full">
+                  Job Seekers
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 justify-items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 justify-items-center max-w-3xl mx-auto">
                 {/* Asman iOS */}
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <Apple className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900 text-lg">iOS</span>
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="p-2 bg-gray-900 rounded-xl">
+                      <Apple className="h-6 w-6 text-white" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-xl">iOS App</span>
                   </div>
 
                   {qrCodes.asmanIos ? (
-                    <img
-                      src={qrCodes.asmanIos}
-                      alt="Asman iOS QR Code"
-                      className="w-40 h-40 border-2 border-gray-300"
-                      data-testid="qr-asman-ios"
-                    />
+                    <div className="p-2 bg-white rounded-2xl shadow-lg ring-1 ring-gray-200 group-hover:shadow-xl transition-shadow duration-300">
+                      <img
+                        src={qrCodes.asmanIos}
+                        alt="Asman iOS QR Code"
+                        className="w-44 h-44 rounded-lg"
+                        data-testid="qr-asman-ios"
+                      />
+                    </div>
                   ) : (
-                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
-                      <span className="text-sm text-gray-500">Loading...</span>
+                    <div className="w-48 h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl shadow-lg ring-1 ring-gray-200 flex items-center justify-center">
+                      <span className="text-base text-gray-500 font-medium">Generating...</span>
                     </div>
                   )}
 
-                  <p className="text-sm text-gray-600 mt-3">
+                  <p className="text-base text-gray-500 mt-4 font-medium">
                     iPhone & iPad
                   </p>
                 </div>
 
                 {/* Asman Android */}
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <Tablet className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900 text-lg">Android</span>
+                <div className="flex flex-col items-center group">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="p-2 bg-green-600 rounded-xl">
+                      <Tablet className="h-6 w-6 text-white" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-xl">Android</span>
                   </div>
 
                   {qrCodes.asmanAndroid ? (
-                    <img
-                      src={qrCodes.asmanAndroid}
-                      alt="Asman Android QR Code"
-                      className="w-40 h-40 border-2 border-gray-300"
-                      data-testid="qr-asman-android"
-                    />
+                    <div className="p-2 bg-white rounded-2xl shadow-lg ring-1 ring-gray-200 group-hover:shadow-xl transition-shadow duration-300">
+                      <img
+                        src={qrCodes.asmanAndroid}
+                        alt="Asman Android QR Code"
+                        className="w-44 h-44 rounded-lg"
+                        data-testid="qr-asman-android"
+                      />
+                    </div>
                   ) : (
-                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
-                      <span className="text-sm text-gray-500">Loading...</span>
+                    <div className="w-48 h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl shadow-lg ring-1 ring-gray-200 flex items-center justify-center">
+                      <span className="text-base text-gray-500 font-medium">Generating...</span>
                     </div>
                   )}
 
-                  <p className="text-sm text-gray-600 mt-3">
+                  <p className="text-base text-gray-500 mt-4 font-medium">
                     Android devices
                   </p>
                 </div>
@@ -339,11 +362,10 @@ export function Navigation() {
             </div>
           </div>
 
-          <div className="flex justify-center pt-8">
+          <div className="flex justify-center pt-12">
             <Button
-              variant="ghost"
               onClick={() => setIsDownloadModalOpen(false)}
-              className="px-6 py-2 text-gray-700 hover:bg-black/5 rounded-lg font-medium"
+              className="px-8 py-3 bg-gray-900 text-white hover:bg-gray-800 rounded-2xl font-semibold text-base transition-all duration-200 shadow-lg hover:shadow-xl"
               data-testid="button-close-modal"
             >
               Done
