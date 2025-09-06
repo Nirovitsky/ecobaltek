@@ -53,12 +53,11 @@ export function Footer() {
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4" data-testid="text-footer-platforms-title">Platforms</h4>
+              <h4 className="font-semibold mb-4" data-testid="text-footer-contact-title">Contact Info</h4>
               <ul className="space-y-2 text-secondary-foreground/80">
-                <li><a href="#" className="hover:text-white transition-colors" data-testid="link-baltek-footer">baltek business</a></li>
-                <li><a href="#" className="hover:text-white transition-colors" data-testid="link-asman-footer">Asman</a></li>
-                <li><a href="#" className="hover:text-white transition-colors" data-testid="link-api-docs">API Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition-colors" data-testid="link-integrations">Integrations</a></li>
+                <li data-testid="text-company-address">123 Business Street<br />San Francisco, CA 94105</li>
+                <li><a href="tel:+1-555-123-4567" className="hover:text-white transition-colors" data-testid="link-phone">+1 (555) 123-4567</a></li>
+                <li><a href="mailto:info@baltek.com" className="hover:text-white transition-colors" data-testid="link-email">info@baltek.com</a></li>
               </ul>
             </div>
             <div>
