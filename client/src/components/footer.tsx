@@ -28,11 +28,11 @@ export function Footer() {
             Join thousands of businesses and professionals who have revolutionized their approach to recruitment
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-colors shadow-lg group" data-testid="button-start-baltek">
+            <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-secondary/90 transition-colors shadow-lg group" data-testid="button-start-baltek">
               <i className="fas fa-building mr-2 group-hover:scale-110 transition-transform"></i>
               Start with baltek business
             </button>
-            <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-secondary/90 transition-colors shadow-lg group" data-testid="button-explore-asman">
+            <button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-colors shadow-lg group" data-testid="button-explore-asman">
               <i className="fas fa-search mr-2 group-hover:scale-110 transition-transform"></i>
               Explore Jobs on Asman
             </button>
