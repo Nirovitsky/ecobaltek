@@ -75,7 +75,7 @@ export function Navigation() {
                 className="h-6 sm:h-8 w-auto mr-2 sm:mr-3"
                 data-testid="logo-baltek"
               />
-              <div className="text-base sm:text-lg font-medium text-black">baltek</div>
+              <div className="text-base sm:text-lg font-medium text-gray-600 font-['Roboto',sans-serif]">baltek</div>
             </div>
 
             {/* Desktop Navigation Links */}
