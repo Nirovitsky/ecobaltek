@@ -206,12 +206,12 @@ export function Navigation() {
             </p>
           </DialogHeader>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             {/* baltek business App */}
-            <div className="bg-white/40 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-lg">
-              <div className="flex items-center justify-center mb-6">
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-8">
                 <Building2 className="h-6 w-6 text-gray-700 mr-3" />
-                <h3 className="text-xl font-semibold text-gray-900">
+                <h3 className="text-2xl font-semibold text-gray-900">
                   baltek business
                 </h3>
                 <span className="ml-3 px-3 py-1 bg-black/10 text-gray-700 text-xs font-medium rounded-full">
@@ -219,30 +219,28 @@ export function Navigation() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 justify-items-center">
                 {/* baltek iOS */}
                 <div className="flex flex-col items-center">
                   <div className="flex items-center space-x-2 mb-4">
                     <Apple className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900">iOS</span>
+                    <span className="font-medium text-gray-900 text-lg">iOS</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
-                    {qrCodes.baltekIos ? (
-                      <img
-                        src={qrCodes.baltekIos}
-                        alt="baltek business iOS QR Code"
-                        className="w-40 h-40"
-                        data-testid="qr-baltek-ios"
-                      />
-                    ) : (
-                      <div className="w-40 h-40 bg-gray-50/80 rounded-lg flex items-center justify-center">
-                        <span className="text-sm text-gray-500">Loading...</span>
-                      </div>
-                    )}
-                  </div>
+                  {qrCodes.baltekIos ? (
+                    <img
+                      src={qrCodes.baltekIos}
+                      alt="baltek business iOS QR Code"
+                      className="w-40 h-40 border-2 border-gray-300"
+                      data-testid="qr-baltek-ios"
+                    />
+                  ) : (
+                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
+                      <span className="text-sm text-gray-500">Loading...</span>
+                    </div>
+                  )}
 
-                  <p className="text-xs text-gray-500 text-center mt-3">
+                  <p className="text-sm text-gray-600 mt-3">
                     iPhone & iPad
                   </p>
                 </div>
@@ -251,65 +249,64 @@ export function Navigation() {
                 <div className="flex flex-col items-center">
                   <div className="flex items-center space-x-2 mb-4">
                     <Tablet className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900">Android</span>
+                    <span className="font-medium text-gray-900 text-lg">Android</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
-                    {qrCodes.baltekAndroid ? (
-                      <img
-                        src={qrCodes.baltekAndroid}
-                        alt="baltek business Android QR Code"
-                        className="w-40 h-40"
-                        data-testid="qr-baltek-android"
-                      />
-                    ) : (
-                      <div className="w-40 h-40 bg-gray-50/80 rounded-lg flex items-center justify-center">
-                        <span className="text-sm text-gray-500">Loading...</span>
-                      </div>
-                    )}
-                  </div>
+                  {qrCodes.baltekAndroid ? (
+                    <img
+                      src={qrCodes.baltekAndroid}
+                      alt="baltek business Android QR Code"
+                      className="w-40 h-40 border-2 border-gray-300"
+                      data-testid="qr-baltek-android"
+                    />
+                  ) : (
+                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
+                      <span className="text-sm text-gray-500">Loading...</span>
+                    </div>
+                  )}
 
-                  <p className="text-xs text-gray-500 text-center mt-3">
+                  <p className="text-sm text-gray-600 mt-3">
                     Android devices
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* Divider */}
+            <div className="border-t border-gray-300 my-8"></div>
+
             {/* Asman App */}
-            <div className="bg-white/40 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-lg">
-              <div className="flex items-center justify-center mb-6">
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-8">
                 <UserCheck className="h-6 w-6 text-gray-700 mr-3" />
-                <h3 className="text-xl font-semibold text-gray-900">Asman</h3>
+                <h3 className="text-2xl font-semibold text-gray-900">Asman</h3>
                 <span className="ml-3 px-3 py-1 bg-black/10 text-gray-700 text-xs font-medium rounded-full">
                   For Job Seekers
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 justify-items-center">
                 {/* Asman iOS */}
                 <div className="flex flex-col items-center">
                   <div className="flex items-center space-x-2 mb-4">
                     <Apple className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900">iOS</span>
+                    <span className="font-medium text-gray-900 text-lg">iOS</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
-                    {qrCodes.asmanIos ? (
-                      <img
-                        src={qrCodes.asmanIos}
-                        alt="Asman iOS QR Code"
-                        className="w-40 h-40"
-                        data-testid="qr-asman-ios"
-                      />
-                    ) : (
-                      <div className="w-40 h-40 bg-gray-50/80 rounded-lg flex items-center justify-center">
-                        <span className="text-sm text-gray-500">Loading...</span>
-                      </div>
-                    )}
-                  </div>
+                  {qrCodes.asmanIos ? (
+                    <img
+                      src={qrCodes.asmanIos}
+                      alt="Asman iOS QR Code"
+                      className="w-40 h-40 border-2 border-gray-300"
+                      data-testid="qr-asman-ios"
+                    />
+                  ) : (
+                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
+                      <span className="text-sm text-gray-500">Loading...</span>
+                    </div>
+                  )}
 
-                  <p className="text-xs text-gray-500 text-center mt-3">
+                  <p className="text-sm text-gray-600 mt-3">
                     iPhone & iPad
                   </p>
                 </div>
@@ -318,25 +315,23 @@ export function Navigation() {
                 <div className="flex flex-col items-center">
                   <div className="flex items-center space-x-2 mb-4">
                     <Tablet className="h-5 w-5 text-gray-700" />
-                    <span className="font-medium text-gray-900">Android</span>
+                    <span className="font-medium text-gray-900 text-lg">Android</span>
                   </div>
 
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/40 shadow-sm">
-                    {qrCodes.asmanAndroid ? (
-                      <img
-                        src={qrCodes.asmanAndroid}
-                        alt="Asman Android QR Code"
-                        className="w-40 h-40"
-                        data-testid="qr-asman-android"
-                      />
-                    ) : (
-                      <div className="w-40 h-40 bg-gray-50/80 rounded-lg flex items-center justify-center">
-                        <span className="text-sm text-gray-500">Loading...</span>
-                      </div>
-                    )}
-                  </div>
+                  {qrCodes.asmanAndroid ? (
+                    <img
+                      src={qrCodes.asmanAndroid}
+                      alt="Asman Android QR Code"
+                      className="w-40 h-40 border-2 border-gray-300"
+                      data-testid="qr-asman-android"
+                    />
+                  ) : (
+                    <div className="w-40 h-40 border-2 border-gray-300 flex items-center justify-center">
+                      <span className="text-sm text-gray-500">Loading...</span>
+                    </div>
+                  )}
 
-                  <p className="text-xs text-gray-500 text-center mt-3">
+                  <p className="text-sm text-gray-600 mt-3">
                     Android devices
                   </p>
                 </div>
