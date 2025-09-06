@@ -197,14 +197,6 @@ export function Navigation() {
       {/* Download Modal - Modern Design */}
       <Dialog open={isDownloadModalOpen} onOpenChange={setIsDownloadModalOpen}>
         <DialogContent className="max-w-5xl w-[95vw] max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-50 via-white to-gray-50 border-0 shadow-2xl rounded-3xl">
-          <DialogHeader className="text-center pb-12">
-            <DialogTitle className="text-4xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent mb-6">
-              Get Our Apps
-            </DialogTitle>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-              Download our mobile apps to access all features on the go
-            </p>
-          </DialogHeader>
 
           <div className="space-y-16">
             {/* baltek business App */}
@@ -362,15 +354,6 @@ export function Navigation() {
             </div>
           </div>
 
-          <div className="flex justify-center pt-12">
-            <Button
-              onClick={() => setIsDownloadModalOpen(false)}
-              className="px-8 py-3 bg-gray-900 text-white hover:bg-gray-800 rounded-2xl font-semibold text-base transition-all duration-200 shadow-lg hover:shadow-xl"
-              data-testid="button-close-modal"
-            >
-              Done
-            </Button>
-          </div>
         </DialogContent>
       </Dialog>
     </>
