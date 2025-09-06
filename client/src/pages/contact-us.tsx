@@ -1,21 +1,43 @@
 export default function ContactUs() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4" data-testid="title-contact-us">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6" data-testid="title-contact-us">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-600" data-testid="subtitle-contact-us">
-            Get in touch with our team. We're here to help you succeed.
+          <p className="text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed" data-testid="subtitle-contact-us">
+            Get in touch with our team. We're here to help you succeed on your recruitment journey.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="text-center bg-white rounded-2xl p-8 shadow-sm" data-testid="stat-response-time">
+            <div className="text-4xl font-bold text-blue-600 mb-2">24hrs</div>
+            <div className="text-lg font-medium text-gray-900 mb-2">Response Time</div>
+            <div className="text-gray-600">We respond to all inquiries within 24 hours</div>
+          </div>
+          <div className="text-center bg-white rounded-2xl p-8 shadow-sm" data-testid="stat-support-rating">
+            <div className="text-4xl font-bold text-green-600 mb-2">99%</div>
+            <div className="text-lg font-medium text-gray-900 mb-2">Satisfaction Rate</div>
+            <div className="text-gray-600">Our customers love our support experience</div>
+          </div>
+          <div className="text-center bg-white rounded-2xl p-8 shadow-sm" data-testid="stat-availability">
+            <div className="text-4xl font-bold text-purple-600 mb-2">24/7</div>
+            <div className="text-lg font-medium text-gray-900 mb-2">Availability</div>
+            <div className="text-gray-600">Round-the-clock support for urgent issues</div>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200" data-testid="section-contact-form">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h2>
+          <div className="bg-white rounded-2xl p-10 shadow-lg border-0" data-testid="section-contact-form">
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Send us a message</h2>
+              <p className="text-lg text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
             <form className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -115,8 +137,11 @@ export default function ContactUs() {
 
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200" data-testid="section-contact-info">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Get in touch</h2>
+            <div className="bg-white rounded-2xl p-10 shadow-lg border-0" data-testid="section-contact-info">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Get in touch</h2>
+                <p className="text-lg text-gray-600">Multiple ways to reach our team. Choose what works best for you.</p>
+              </div>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -175,12 +200,48 @@ export default function ContactUs() {
               </div>
             </div>
 
-            <div className="bg-blue-50 rounded-xl p-8" data-testid="section-response-time">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Response Time</h3>
-              <p className="text-gray-600">
-                We typically respond to all inquiries within 24 hours during business days. 
-                For urgent matters, please call us directly.
-              </p>
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-10" data-testid="section-response-time">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Business Hours</h3>
+              <div className="space-y-4 text-gray-600">
+                <div className="flex justify-between">
+                  <span className="font-medium">Monday - Friday:</span>
+                  <span>9:00 AM - 6:00 PM PST</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Saturday:</span>
+                  <span>10:00 AM - 4:00 PM PST</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Sunday:</span>
+                  <span>Closed</span>
+                </div>
+              </div>
+              <div className="mt-6 pt-6 border-t border-white/50">
+                <p className="text-sm text-gray-600">
+                  <strong>Emergency Support:</strong> Available 24/7 for critical issues
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-10 shadow-lg border-0" data-testid="section-office-locations">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Office Locations</h3>
+              <div className="space-y-6">
+                <div className="border-l-4 border-blue-600 pl-6">
+                  <h4 className="text-lg font-semibold text-gray-900">San Francisco HQ</h4>
+                  <p className="text-gray-600 mt-2">123 Business Street<br />San Francisco, CA 94105</p>
+                  <p className="text-sm text-gray-500 mt-2">Main office & customer support</p>
+                </div>
+                <div className="border-l-4 border-green-600 pl-6">
+                  <h4 className="text-lg font-semibold text-gray-900">New York Office</h4>
+                  <p className="text-gray-600 mt-2">456 Tech Avenue<br />New York, NY 10001</p>
+                  <p className="text-sm text-gray-500 mt-2">Sales & partnerships</p>
+                </div>
+                <div className="border-l-4 border-purple-600 pl-6">
+                  <h4 className="text-lg font-semibold text-gray-900">Austin Office</h4>
+                  <p className="text-gray-600 mt-2">789 Innovation Blvd<br />Austin, TX 78701</p>
+                  <p className="text-sm text-gray-500 mt-2">Development & engineering</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

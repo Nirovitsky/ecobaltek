@@ -1,19 +1,45 @@
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4" data-testid="title-terms-of-service">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6" data-testid="title-terms-of-service">
             Terms of Service
           </h1>
-          <p className="text-lg text-gray-600" data-testid="subtitle-terms-of-service">
+          <p className="text-2xl text-gray-600 mb-4" data-testid="subtitle-terms-of-service">
             Last updated: December 2024
           </p>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-gray-600 leading-relaxed">
+              These terms govern your use of baltek business and Asman platforms. By using our services, 
+              you agree to these terms which ensure a fair and secure experience for all users.
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-          <div className="prose max-w-none">
+        {/* Service Overview */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="bg-white rounded-2xl p-10 shadow-lg border-0" data-testid="service-baltek">
+            <div className="text-4xl mb-6">🏢</div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">baltek business</h3>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Our employer platform helps companies find, evaluate, and hire top talent through 
+              AI-powered matching and comprehensive candidate management tools.
+            </p>
+          </div>
+          <div className="bg-white rounded-2xl p-10 shadow-lg border-0" data-testid="service-asman">
+            <div className="text-4xl mb-6">👤</div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Asman</h3>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Our job seeker platform connects talented professionals with their dream opportunities 
+              through intelligent job matching and career development resources.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl p-12 shadow-lg border-0">
+          <div className="prose max-w-none prose-lg prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600">
             <section className="mb-8" data-testid="section-agreement">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Agreement to Terms</h2>
               <p className="text-gray-600 leading-relaxed">

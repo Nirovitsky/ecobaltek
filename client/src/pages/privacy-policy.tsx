@@ -1,19 +1,44 @@
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4" data-testid="title-privacy-policy">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6" data-testid="title-privacy-policy">
             Privacy Policy
           </h1>
-          <p className="text-lg text-gray-600" data-testid="subtitle-privacy-policy">
+          <p className="text-2xl text-gray-600 mb-4" data-testid="subtitle-privacy-policy">
             Last updated: December 2024
           </p>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Your privacy and data security are fundamental to everything we do. This comprehensive policy 
+              explains how we protect, use, and manage your personal information across our platforms.
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-          <div className="prose max-w-none">
+        {/* Trust Indicators */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="text-center bg-white rounded-2xl p-8 shadow-sm" data-testid="indicator-gdpr">
+            <div className="text-4xl mb-4">🛡️</div>
+            <div className="text-lg font-bold text-gray-900 mb-2">GDPR Compliant</div>
+            <div className="text-gray-600">Full compliance with European data protection standards</div>
+          </div>
+          <div className="text-center bg-white rounded-2xl p-8 shadow-sm" data-testid="indicator-encryption">
+            <div className="text-4xl mb-4">🔒</div>
+            <div className="text-lg font-bold text-gray-900 mb-2">256-bit Encryption</div>
+            <div className="text-gray-600">Bank-level security for all your personal data</div>
+          </div>
+          <div className="text-center bg-white rounded-2xl p-8 shadow-sm" data-testid="indicator-control">
+            <div className="text-4xl mb-4">⚡</div>
+            <div className="text-lg font-bold text-gray-900 mb-2">Full Control</div>
+            <div className="text-gray-600">You own your data and can delete it anytime</div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl p-12 shadow-lg border-0">
+          <div className="prose max-w-none prose-lg prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600">
             <section className="mb-8" data-testid="section-introduction">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Introduction</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
